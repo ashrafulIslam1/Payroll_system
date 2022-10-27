@@ -1,7 +1,15 @@
-﻿
+﻿@model Payroll_system.ViewModels.DepartmentViewModel
 @{
     ViewData["Title"] = "Create";
 }
 
 <h1>Create</h1>
+
+<form asp-controller="Department" asp-action="Create" method="post">
+    <div class="form-group">
+        <input type="text" asp-for="Name" class="form-control"/>
+
+        <input type="submit" value="Save" />
+    </div>
+</form>
 

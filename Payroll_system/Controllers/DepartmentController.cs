@@ -17,7 +17,7 @@ namespace Payroll_system.Controllers
 
         public IActionResult Index(string searchString)
         {
-            return View();
+            return View(_departmentService.GetAll());
         }
 
         [HttpGet]
@@ -29,15 +29,20 @@ namespace Payroll_system.Controllers
         [HttpPost]
         public IActionResult Create(DepartmentViewModel viewModel)
         {
-            return View();
+            if(viewModel.Id == 0)
+                _departmentService.Create(viewModel);
+            else
+                _departmentService.Update(viewModel);
+
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
         public IActionResult Delete(int id)
         {
-            return View();
+            _departmentService.Delete(id);
+
+            return RedirectToAction("Index");
         }
-
-
     }
 }

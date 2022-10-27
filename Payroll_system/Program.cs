@@ -1,5 +1,6 @@
 using Payroll_system.ApplicationDb;
 using Microsoft.EntityFrameworkCore;
+using Payroll_system.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
     builder.Configuration.GetConnectionString("DefaultConnection")
     ));
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+
+builder.Services.AddScoped<DepartmentService>();
+builder.Services.AddScoped<AttendanceService>();
+builder.Services.AddScoped<EmployeeService>();
+builder.Services.AddScoped<SalaryService>();
+builder.Services.AddScoped<LeaveApplicationService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

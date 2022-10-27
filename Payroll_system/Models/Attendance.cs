@@ -8,5 +8,4 @@ public class Attendance
     public DateTime InDateTime { get; set; }
     public DateTime OutDateTime { get; set; }
     public DateTime Date { get; set; }
-    //Model
 }

@@ -8,5 +8,6 @@
         public DateTime InDateTime { get; set; }
         public DateTime OutDateTime { get; set; }
         public DateTime Date { get; set; }
+        public int Status { get; set; }
     }
 }

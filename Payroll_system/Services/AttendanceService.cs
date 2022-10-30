@@ -72,7 +72,10 @@ public class AttendanceService
                         Date = s.Date,
                         InDateTime = s.InDateTime,
                         OutDateTime = s.OutDateTime,
+                        Status = s.InDateTime == DateTime.MinValue || s.OutDateTime == DateTime.MinValue ? 0 : 1
                     }).ToList();
+
+        // data.Where(x => x.Status == 1).Count();
         return data;
     }
 

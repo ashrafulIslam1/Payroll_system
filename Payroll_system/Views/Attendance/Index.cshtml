@@ -49,6 +49,9 @@
                 <th>
                     Date
                 </th>
+                <th>
+                    Status
+                </th>
             </tr>
         </thead>
 
@@ -73,6 +76,9 @@
                     </td>
                     <td width="20%">
                         @item.Date
+                    </td>
+                    <td width="20%">
+                        @(item.Status == 1 ? "Present" : "Absent")
                     </td>
                     <td>
                         <div class="w-75 btn-group" role="group">

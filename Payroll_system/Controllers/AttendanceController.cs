@@ -23,13 +23,19 @@ namespace Payroll_system.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+
             return View();
         }
 
         [HttpPost]
         public IActionResult Create(AttendanceViewModel viewModel)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                _attendanceService.Create(viewModel);
+                return RedirectToAction("Index");
+            }
+            return View(viewModel);
         }
 
         [HttpPost]

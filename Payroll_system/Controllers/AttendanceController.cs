@@ -15,9 +15,9 @@ namespace Payroll_system.Controllers
             _attendanceService = attendanceService;
         }
 
-        public IActionResult Index(string searchString)
+        public IActionResult Index()
         {
-            return View();
+            return View(_attendanceService.GetAll());
         }
 
         [HttpGet]

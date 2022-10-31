@@ -4,27 +4,32 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Attendance</h1>
-
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
-            <h2 class="text-primary">Attendance List</h2>
+            <h1 class="text-primary">Attendance List</h1>
         </div>
-        <div class="col-6 text-end">
-            <a asp-controller="Attendance" asp-action="Create" class="btn btn-primary">
-                <i class="bi bi-plus-circle-fill"></i> &nbsp;New Attendance
-            </a>
-        </div>
-        <div class="col-6">
-            <form asp-action="Index" method="get">
-                <div class="form-actions no-color">
-                    <p style="margin-top:20px">
-                        <input type="text" name="SearchString" />
-                        <input type="submit" value="Search" class="btn btn-success btn-sm" />
-                    </p>
+        
+        <div class="d-flex justify-content-between mt-3">
+            
+                <form asp-action="Index" method="get">
+                    <div class="form-actions no-color">
+                        <p>
+                            <input type="text" name="SearchString" />
+                            <input type="submit" value="Search" class="btn btn-success btn-sm" />
+                        </p>
+                    </div>
+                </form>
+
+                <div class="text-end">
+                    <a asp-controller="Attendance" asp-action="Create" class="btn btn-primary">
+                        <i class="bi bi-plus-circle-fill"></i> &nbsp;New Attendance
+                    </a>
                 </div>
-            </form>
+
+         
+            
+            
         </div>
     </div>
 
@@ -65,7 +70,7 @@
                     <td width="10%">
                         @item.EmployeeId
                     </td>
-                    <td width="30%">
+                    <td width="15%">
                         @item.EmployeeName
                     </td>
                     <td width="20%">
@@ -81,9 +86,9 @@
                         @(item.Status == 1 ? "Present" : "Absent")
                     </td>
                     <td>
-                        <div class="w-75 btn-group" role="group">
-                            <a asp-controller="Attendance" asp-action="Update" asp-route-id="@item.EmployeeId" class="btn btn-warning mx-1"> <i class="bi bi-pencil-square"></i>&nbsp;</a> <br />
-                            <a asp-controller="Attendance" asp-action="Delete" asp-route-id="@item.EmployeeId" class="btn btn-danger mx-1"> <i class="bi bi-trash3-fill"></i>&nbsp;</a>
+                        <div class="btn-group mb-0" role="group">
+                            <a asp-controller="Attendance" asp-action="Update" asp-route-id="@item.EmployeeId" class="btn btn-warning rounded-1"> <i class="bi bi-pencil-square"></i>&nbsp;</a>
+                            <a asp-controller="Attendance" asp-action="Delete" asp-route-id="@item.EmployeeId" class="btn btn-danger mx-1 rounded-1"> <i class="bi bi-trash3-fill"></i>&nbsp;</a>
                         </div>
 
                     </td>

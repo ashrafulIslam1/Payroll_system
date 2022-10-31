@@ -38,16 +38,17 @@ namespace Payroll_system.Controllers
             return View(viewModel);
         }
 
-        public IActionResult Update(int ? EmployeeId)
+
+        public IActionResult Update(int? EmployeeId) 
         {
-            if(EmployeeId == null || EmployeeId == 0)
+            if (EmployeeId == null || EmployeeId == 0)
             {
                 return NotFound();
             }
 
             var updateAttendance = _attendanceService.GetById(EmployeeId);
 
-            if(updateAttendance == null)
+            if (updateAttendance == null)
             {
                 return NotFound();
             }

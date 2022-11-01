@@ -14,27 +14,85 @@ namespace Payroll_system.Controllers
             _employeeService = employeeService;
         }
 
-        public IActionResult Index(string searchString)
+        public IActionResult Index()
         {
-            return View();
+            return View(_employeeService.GetAll());
         }
 
         [HttpGet]
         public IActionResult Create()
         {
+
             return View();
         }
 
         [HttpPost]
         public IActionResult Create(EmployeeViewModel viewModel)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                _employeeService.Create(viewModel);
+                return RedirectToAction("Index");
+            }
+            return View(viewModel);
+        }
+
+        [HttpGet]
+        public IActionResult Update(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var updateEmployee = _employeeService.GetById((int)id);
+
+            if (updateEmployee == null)
+            {
+                return NotFound();
+            }
+
+            return View(updateEmployee);
         }
 
         [HttpPost]
-        public IActionResult Delete(int id)
+        public IActionResult Update(EmployeeViewModel viewModel)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                _employeeService.Update(viewModel);
+                return RedirectToAction("Index");
+            }
+            return View(viewModel);
+        }
+
+        public IActionResult Delete(int? id)
+        {
+            if(id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var deleteEmployee = _employeeService.GetById((int)id);
+
+            if(deleteEmployee == null)
+            {
+                return NotFound();
+            }
+
+            return View(deleteEmployee);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteAll(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            _employeeService.Delete((int)id);
+
+            return RedirectToAction("Index");
         }
     }
 }

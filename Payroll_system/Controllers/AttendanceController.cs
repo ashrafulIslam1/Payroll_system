@@ -39,14 +39,14 @@ namespace Payroll_system.Controllers
         }
 
 
-        public IActionResult Update(int? EmployeeId) 
+        public IActionResult Update(int? id) 
         {
-            if (EmployeeId == null || EmployeeId == 0)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
 
-            var updateAttendance = _attendanceService.GetById(EmployeeId);
+            var updateAttendance = _attendanceService.GetById((int)id);
 
             if (updateAttendance == null)
             {
@@ -57,9 +57,41 @@ namespace Payroll_system.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(int id)
+        public IActionResult Update(AttendanceViewModel viewModel)
         {
-            return View();
+            if(ModelState.IsValid)
+            {
+                _attendanceService.Update(viewModel);
+                return RedirectToAction("Index");
+            }
+            return View(viewModel) ;
+        }
+
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var deleteAttendance = _attendanceService.GetById((int)id);
+
+            if(deleteAttendance == null)
+                return NotFound();
+
+            return View(deleteAttendance);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteAll(int? id)
+        {
+            if(id == null || id ==0)
+            {
+                return NotFound();
+            }
+            _attendanceService.Delete((int)id);
+
+            return RedirectToAction("Index");
         }
     }
 }

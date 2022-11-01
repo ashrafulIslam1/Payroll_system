@@ -26,6 +26,11 @@ public class EmployeeService
             Name = viewModel.Name,
             Id = viewModel.Id,
             Dept = viewModel.Dept,
+            PresentAddress = viewModel.PresentAddress,
+            PermanentAddressBn = viewModel.PermanentAddressBn,
+            JoinDate = viewModel.JoinDate,
+            Email = viewModel.Email,
+            MobileNo = viewModel.MobileNo,
         };
         _dbContext.Employees.Add(model); // Here 'Employees' is the table name
         _dbContext.SaveChanges();
@@ -41,6 +46,12 @@ public class EmployeeService
         model.Name = viewModel.Name;
         model.Id = viewModel.Id;
         model.Dept = viewModel.Dept;
+        model.PresentAddress = viewModel.PresentAddress;
+        model.JoinDate = viewModel.JoinDate;
+        model.PresentAddress = viewModel.PresentAddress;
+        model.PermanentAddressBn = viewModel.PermanentAddressBn;
+        model.MobileNo = viewModel.MobileNo;
+        model.Email = viewModel.Email;
 
         _dbContext.Employees.Update(model);
         _dbContext.SaveChanges();
@@ -65,6 +76,11 @@ public class EmployeeService
                        Name=s.Name,
                        Dept=s.Dept,
                        Id=s.Id,
+                       MobileNo=s.MobileNo,
+                       PermanentAddressBn=s.PermanentAddressBn,
+                       PresentAddress=s.PresentAddress,
+                       Email=s.Email,
+                       JoinDate=s.JoinDate
                    }).ToList();
         return data;
     }
@@ -77,7 +93,12 @@ public class EmployeeService
                     {
                         Name = s.Name,
                         Dept = s.Dept,
-                        Id = s.Id
+                        Id = s.Id,
+                        MobileNo = s.MobileNo,
+                        PermanentAddressBn = s.PermanentAddressBn,
+                        PresentAddress = s.PresentAddress,
+                        Email = s.Email,
+                        JoinDate = s.JoinDate
                     }).SingleOrDefault();
         return data;
     }

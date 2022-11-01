@@ -1,7 +1,72 @@
-﻿
+﻿@model List<Payroll_system.ViewModels.SalaryViewModel>
+
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h1 class="text-primary">Salary List</h1>
+        </div>
+
+        <div class="d-flex justify-content-between mt-3">
+
+            <form asp-action="Index" method="get">
+                <div class="form-actions no-color">
+                    <p>
+                        <input type="text" name="SearchString" />
+                        <input type="submit" value="Search" class="btn btn-success btn-sm" />
+                    </p>
+                </div>
+            </form>
+
+            <div class="text-end">
+                <a asp-controller="Salary" asp-action="Create" class="btn btn-primary">
+                    <i class="bi bi-plus-circle-fill"></i> &nbsp;New Salary
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-borderd table-striped align-middle" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    EmployeeId
+                </th>
+                <th>
+                    SalaryTypeName
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td width="10%">
+                        @item.Id
+                    </td>
+                    <td width="10%">
+                        @item.EmployeeId
+                    </td>
+                    <td width="20%">
+                        @item.SalaryTypeName
+                    </td>
+                    <td>
+                        <div class="btn-group mb-0" role="group">
+                            <a asp-controller="Salary" asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning rounded-1 text-end"> <i class="bi bi-pencil-square"></i>&nbsp;</a>
+                            <a asp-controller="Salary" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger mx-1 rounded-1"> <i class="bi bi-trash3-fill"></i>&nbsp;</a>
+                        </div>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 

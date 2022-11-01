@@ -1,7 +1,43 @@
-﻿
+﻿@model Payroll_system.ViewModels.SalaryViewModel
+
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<form method="post">
+    <div class="border p-3 mt-5 rounded-2">
+        <div class="row pb-2">
+            <h2 class="text-primary">Add Salary</h2>
+            <hr />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Id"></label>
+            <input asp-for="Id" class="form-control" />
+            <span asp-validation-for="Id" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="EmployeeId"></label>
+            <input asp-for="EmployeeId" class="form-control" />
+            <span asp-validation-for="EmployeeId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="SalaryTypeName"></label>
+            <input asp-for="SalaryTypeName" class="form-control" />
+            <span asp-validation-for="SalaryTypeName" class="text-danger"></span>
+        </div>
+    </div>
+    <br />
+    <button type="submit" class="bnt btn-primary" style="width:150px; height:37px; border-radius:3px">Create</button>
+    <a asp-controller="Salary" asp-action="Index" class="btn btn-danger" style="width:150px">
+        Go back
+    </a>
+
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+   }
 

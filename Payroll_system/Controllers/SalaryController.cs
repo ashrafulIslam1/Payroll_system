@@ -16,7 +16,7 @@ namespace Payroll_system.Controllers
         }
         public IActionResult Index(string searchString)
         {
-            return View();
+            return View(_salaryService.GetAll());
         }
 
         [HttpGet]
@@ -28,7 +28,12 @@ namespace Payroll_system.Controllers
         [HttpPost]
         public IActionResult Create(SalaryViewModel viewModel)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                _salaryService.Create(viewModel);
+                return RedirectToAction("Index");
+            }
+            return View(viewModel);
         }
 
         [HttpPost]

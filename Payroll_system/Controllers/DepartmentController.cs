@@ -29,12 +29,41 @@ namespace Payroll_system.Controllers
         [HttpPost]
         public IActionResult Create(DepartmentViewModel viewModel)
         {
-            if(viewModel.Id == 0)
+            if(ModelState.IsValid)
+            {
                 _departmentService.Create(viewModel);
-            else
-                _departmentService.Update(viewModel);
+                return RedirectToAction("Index");
+            }
 
-            return RedirectToAction("Index");
+            return View(viewModel);
+        }
+
+        public IActionResult Update(int id)
+        {
+            if(id == 0)
+            {
+                return NotFound();
+            }
+
+            var updateDept = _departmentService.GetById(id);
+
+            if(updateDept == null)
+            {
+                return NotFound();
+            }
+            return View(updateDept);
+        }
+
+        [HttpPost]
+
+        public IActionResult Update(DepartmentViewModel viewModel)
+        {
+            if(ModelState.IsValid)
+            {
+                _departmentService.Update(viewModel);
+                return RedirectToAction("Index");
+            }
+            return View(viewModel);
         }
 
         [HttpPost]

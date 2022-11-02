@@ -3,15 +3,18 @@ using Payroll_system.Models;
 using Microsoft.AspNetCore.Mvc;
 using Payroll_system.ViewModels;
 using Payroll_system.Services;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Payroll_system.Controllers
 {
     public class EmployeeController : Controller
     {
         private EmployeeService _employeeService;
-        public EmployeeController(EmployeeService employeeService)
+        private DepartmentService _departmentService;
+        public EmployeeController(EmployeeService employeeService, DepartmentService departmentService)
         {
             _employeeService = employeeService;
+            _departmentService = departmentService;
         }
 
         public IActionResult Index()
@@ -22,7 +25,7 @@ namespace Payroll_system.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-
+            ViewBag.departmentlist = new SelectList(_departmentService.GetDropDown(), "Valu", "Text");
             return View();
         }
 

@@ -1,12 +1,13 @@
 ﻿@model Payroll_system.ViewModels.LeaveApllicationViewModel
+
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Update";
 }
 
 <form method="post">
     <div class="border p-3 mt-5 rounded-2">
         <div class="row pb-2">
-            <h2 class="text-primary">Leave Application</h2>
+            <h2 class="text-primary">Update Application</h2>
             <hr />
         </div>
 
@@ -52,7 +53,7 @@
         </div>
     </div>
     <br />
-    <button type="submit" class="bnt btn-primary" style="width:150px; height:37px; border-radius:3px">Create</button>
+    <button type="submit" class="bnt btn-primary" style="width:150px; height:37px; border-radius:3px">Update</button>
     <a asp-controller="LeaveApplication" asp-action="Index" class="btn btn-danger" style="width:150px">
         Go back
     </a>

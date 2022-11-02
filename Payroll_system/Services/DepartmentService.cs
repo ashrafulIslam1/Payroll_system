@@ -74,5 +74,16 @@ namespace Payroll_system.Services
 
             return data;
         }
+
+        public List<DropDownViewModel> GetDropDown()
+        {
+            var data = (from s in _dbContext.Departments
+                        select new DropDownViewModel
+                        {  
+                            Value = s.Id,
+                            Text = s.Name
+                        }).ToList();
+            return data;
+        }
     }
 }

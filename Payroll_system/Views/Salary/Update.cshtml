@@ -1,14 +1,12 @@
 ﻿@model Payroll_system.ViewModels.SalaryViewModel
-@{
-    ViewData["Title"] = "Delete";
-}
 
-<div class="row pt-5">
-    <h2 class="text-primary">Delete Employee??</h2>
-</div>
-<form method="post" asp-action="DeleteAll">
-    <input asp-for="Id" hidden />
-    @* <div class="border p-3 mt-5 rounded-2">
+
+<form method="post">
+    <div class="border p-3 mt-5 rounded-2">
+        <div class="row pb-2">
+            <h2 class="text-primary">Update Salary</h2>
+            <hr />
+        </div>
 
         <div class="mb-3">
             <label asp-for="Id"></label>
@@ -25,13 +23,13 @@
             <input asp-for="SalaryTypeName" class="form-control" />
             <span asp-validation-for="SalaryTypeName" class="text-danger"></span>
         </div>
-    </div>*@
+    </div>
     <br />
-    <button type="submit" class="bnt btn-primary" style="width:150px; height:37px; border-radius:3px">Delete</button>
+    <button type="submit" class="bnt btn-primary" style="width:150px; height:37px; border-radius:3px">Update</button>
     <a asp-controller="Salary" asp-action="Index" class="btn btn-danger" style="width:150px">
         Go back
     </a>
-    <div/>
+
 </form>
 
 @section Scripts{

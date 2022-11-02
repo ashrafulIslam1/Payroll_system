@@ -36,10 +36,60 @@ namespace Payroll_system.Controllers
             return View(viewModel);
         }
 
+        public IActionResult Update(int id)
+        {
+            if (id == 0)
+                return NotFound();
+
+            var updateSalary = _salaryService.GetById(id);
+
+            if (updateSalary == null)
+            {
+                return NotFound();
+            }
+            return View(updateSalary);
+        }
+
         [HttpPost]
+        public IActionResult Update(SalaryViewModel viewModel)
+        {
+            if(ModelState.IsValid)
+            {
+                _salaryService.Update(viewModel);
+                return RedirectToAction("Index");
+            }
+            return View(viewModel);
+        }
+
         public IActionResult Delete(int id)
         {
-            return View();
+            //if(id is 0 or null)
+
+            if(id == 0)
+            {
+                return NotFound();
+            }
+
+            var deleteSalary = _salaryService.GetById(id);
+
+            if(deleteSalary == null)
+            {
+                return NotFound();
+            }
+
+            return View(deleteSalary);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteALL(int id)
+        {
+            if (id == 0)
+            {
+                return NotFound();
+            }
+
+            _salaryService.Delete(id);
+            return RedirectToAction("Index");
         }
     }
 }

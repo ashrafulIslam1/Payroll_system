@@ -68,9 +68,10 @@ public class SalaryService
 		return data;
 	}
 
-    public SalaryViewModel ? GetById()
+    public SalaryViewModel? GetById(int id)
     {
         var data = (from s in _dbContext.Salarys
+					where s.Id == id
                     select new SalaryViewModel
                     {
                         Id = s.Id,

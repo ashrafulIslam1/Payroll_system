@@ -17,8 +17,8 @@
         </div>
         <div class="mb-3">
             <label asp-for="Dept"></label>
-            <select asp-for="Dept" asp-items="@(ViewBag._departmentlist as SelectList)" />
-            <input asp-for="Dept" class="form-control" />
+            @*<select name="Dept" class="form-control" asp-items="@ViewBag.departmentlist as SelectList"></select>*@
+            <select name="Dept" class="form-control" asp-items="@ViewBag.departmentlist"></select>
             <span asp-validation-for="Dept" class="text-danger"></span>
         </div>
         <div class="mb-3">

@@ -17,15 +17,23 @@ namespace Payroll_system.Controllers
             _departmentService = departmentService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string searchString)
         {
-            return View(_employeeService.GetAll());
+            var query = _employeeService.GetAll().AsQueryable();
+            ViewData["currentFilter"] = searchString;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                query = query.Where(x => x.Name.Contains(searchString));
+            }
+            return View(query.ToList());
+            //return View(_employeeService.GetAll());
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-            ViewBag.departmentlist = new SelectList(_departmentService.GetDropDown(), "Valu", "Text");
+            ViewBag.departmentlist = new SelectList(_departmentService.GetDropDown(), "Value", "Text");
             return View();
         }
 

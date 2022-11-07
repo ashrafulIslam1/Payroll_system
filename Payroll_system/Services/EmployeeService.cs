@@ -102,21 +102,32 @@ public class EmployeeService
                     }).SingleOrDefault();
         return data;
     }
-    public EmployeeViewModel? GetByName(string Name)
+    //public EmployeeViewModel? GetByName(string Name)
+    //{
+    //    var data = (from s in _dbContext.Employees
+    //                where s.Name == Name
+    //                select new EmployeeViewModel
+    //                {
+    //                    Name = s.Name,
+    //                    Dept = s.Dept,
+    //                    Id = s.Id,
+    //                    MobileNo = s.MobileNo,
+    //                    PermanentAddressBn = s.PermanentAddressBn,
+    //                    PresentAddress = s.PresentAddress,
+    //                    Email = s.Email,
+    //                    JoinDate = s.JoinDate
+    //                }).SingleOrDefault();
+    //    return data;
+    //}
+
+    public List<DropDownViewModel> GetDropDown()
     {
         var data = (from s in _dbContext.Employees
-                    where s.Name == Name
-                    select new EmployeeViewModel
+                    select new DropDownViewModel
                     {
-                        Name = s.Name,
-                        Dept = s.Dept,
-                        Id = s.Id,
-                        MobileNo = s.MobileNo,
-                        PermanentAddressBn = s.PermanentAddressBn,
-                        PresentAddress = s.PresentAddress,
-                        Email = s.Email,
-                        JoinDate = s.JoinDate
-                    }).SingleOrDefault();
+                        Value = s.Id,
+                        Text = s.Name
+                    }).ToList();
         return data;
     }
 }

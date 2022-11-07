@@ -3,16 +3,19 @@ using Payroll_system.Models;
 using Microsoft.AspNetCore.Mvc;
 using Payroll_system.ViewModels;
 using Payroll_system.Services;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Payroll_system.Controllers
 {
     public class AttendanceController : Controller
     {
         private AttendanceService _attendanceService;
+        private EmployeeService _employeeService;
 
-        public AttendanceController(AttendanceService attendanceService)
+        public AttendanceController(AttendanceService attendanceService, EmployeeService employeeService)
         {
             _attendanceService = attendanceService;
+            _employeeService = employeeService; 
         }
 
         public IActionResult Index()
@@ -23,7 +26,7 @@ namespace Payroll_system.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-
+            ViewBag.employeelist = new SelectList(_employeeService.GetDropDown(), "Value", "Text");
             return View();
         }
 

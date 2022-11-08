@@ -55,7 +55,6 @@ namespace Payroll_system.Controllers
         }
 
         [HttpPost]
-
         public IActionResult Update(DepartmentViewModel viewModel)
         {
             if(ModelState.IsValid)
@@ -66,12 +65,33 @@ namespace Payroll_system.Controllers
             return View(viewModel);
         }
 
-        [HttpPost]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int? id)
         {
-            _departmentService.Delete(id);
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
 
-            return RedirectToAction("Index");
+            var deleteDepartment = _departmentService.GetById((int)id);
+
+            if (deleteDepartment == null)
+            {
+                return NotFound();
+            }
+
+            return View(deleteDepartment);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteAll(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            _departmentService.Delete((int)id);
+
+            return RedirectToAction("Index"); ;
         }
     }
 }

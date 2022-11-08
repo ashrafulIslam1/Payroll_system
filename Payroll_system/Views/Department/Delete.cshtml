@@ -1,7 +1,23 @@
-﻿
+﻿@model Payroll_system.ViewModels.DepartmentViewModel
 @{
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
+<div class="row pt-5">
+    <h2 class="text-primary">Delete Department??</h2>
+</div>
+<form method="post" asp-action="DeleteAll">
+    <input asp-for="Id" hidden />
+    <br />
+    <button type="submit" class="bnt btn-primary" style="width:150px; height:37px; border-radius:3px">Delete</button>
+    <a asp-controller="Department" asp-action="Index" class="btn btn-danger" style="width:150px">
+        Go back
+    </a>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+  }
 

@@ -82,7 +82,7 @@ public class AttendanceService
     public AttendanceViewModel? GetById(int id)
     {
         var data = (from s in _dbContext.Attendances
-                    where s.EmployeeId == id
+                    where s.AttendanceId == id
                     select new AttendanceViewModel
                     {
                         AttendanceId = s.AttendanceId,

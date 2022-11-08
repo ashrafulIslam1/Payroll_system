@@ -6,7 +6,11 @@
             <h2 class="text-primary">Update Attendance</h2>
             <hr />
         </div>
-       
+        <div class="mb-3">
+            <label asp-for="AttendanceId"></label>
+            <input asp-for="AttendanceId" class="form-control" />
+            <span asp-validation-for="AttendanceId" class="text-danger"></span>
+        </div>
         <div class="mb-3">
             <label asp-for="EmployeeId"></label>
             <input asp-for="EmployeeId" class="form-control" />

@@ -92,6 +92,7 @@ namespace Payroll_system.Controllers
             {
                 return NotFound();
             }
+
             _attendanceService.Delete((int)id);
 
             return RedirectToAction("Index");

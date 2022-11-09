@@ -14,10 +14,10 @@
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="DepartmentName"></label>
+            <label asp-for="DepartmentId"></label>
             @*<input asp-for="DepartmentId" class="form-control" />*@
-            <select name="DepartmentName" class="form-control" asp-items="@ViewBag.departmentlist"></select>
-            <span asp-validation-for="DepartmentName" class="text-danger"></span>
+            <select name="DepartmentId" class="form-control" asp-items="@ViewBag.departmentlist"></select>
+            <span asp-validation-for="DepartmentId" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="PresentAddress"></label>

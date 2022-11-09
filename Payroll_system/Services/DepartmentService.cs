@@ -80,7 +80,7 @@ namespace Payroll_system.Services
             var data = (from s in _dbContext.Departments
                         select new DropDownViewModel
                         {  
-                            Value = s.Id,
+                            Value = s.Id,       
                             Text = s.Name
                         }).ToList();
             return data;

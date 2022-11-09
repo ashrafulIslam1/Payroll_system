@@ -14,9 +14,10 @@
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Dept"></label>
-            <input asp-for="Dept" class="form-control" />
-            <span asp-validation-for="Dept" class="text-danger"></span>
+            <label asp-for="DepartmentName"></label>
+            @*<input asp-for="DepartmentId" class="form-control" />*@
+            <select name="DepartmentName" class="form-control" asp-items="@ViewBag.departmentlist"></select>
+            <span asp-validation-for="DepartmentName" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="PresentAddress"></label>

@@ -16,10 +16,11 @@
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Dept"></label>
+            @*<label asp-for="Dep"></label>*@
+            <label asp-for="DepartmentId"></label>
             @*<select name="Dept" class="form-control" asp-items="@ViewBag.departmentlist as SelectList"></select>*@
-            <select name="Dept" class="form-control" asp-items="@ViewBag.departmentlist"></select>
-            <span asp-validation-for="Dept" class="text-danger"></span>
+            <select name="DepartmentId" class="form-control" asp-items="@ViewBag.departmentlist"></select>
+            <span asp-validation-for="DepartmentId" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="PresentAddress"></label>

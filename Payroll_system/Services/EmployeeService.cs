@@ -25,7 +25,8 @@ public class EmployeeService
             // Here I assign the viewModel properties to the model properties
             Name = viewModel.Name,
             Id = viewModel.Id,
-            Dept = viewModel.Dept,
+            //Dept = viewModel.Dept,
+            DepartmentId = viewModel.DepartmentId,
             PresentAddress = viewModel.PresentAddress,
             PermanentAddressBn = viewModel.PermanentAddressBn,
             JoinDate = viewModel.JoinDate,
@@ -45,7 +46,8 @@ public class EmployeeService
 
         model.Name = viewModel.Name;
         model.Id = viewModel.Id;
-        model.Dept = viewModel.Dept;
+        //model.Dept = viewModel.Dept;
+        model.DepartmentId = viewModel.DepartmentId;
         model.PresentAddress = viewModel.PresentAddress;
         model.JoinDate = viewModel.JoinDate;
         model.PresentAddress = viewModel.PresentAddress;
@@ -71,17 +73,19 @@ public class EmployeeService
     public List<EmployeeViewModel> GetAll()
     {
         var data = (from s in _dbContext.Employees
-                   select new EmployeeViewModel
-                   {
-                       Name=s.Name,
-                       Dept=s.Dept,
-                       Id=s.Id,
-                       MobileNo=s.MobileNo,
-                       PermanentAddressBn=s.PermanentAddressBn,
-                       PresentAddress=s.PresentAddress,
-                       Email=s.Email,
-                       JoinDate=s.JoinDate
-                   }).ToList();
+                    join d in _dbContext.Departments on s.DepartmentId equals d.Id
+                    select new EmployeeViewModel
+                    {
+                        Name = s.Name,
+                        //DepartmentId = s.DepartmentId,
+                        DepartmentName = d.Name,
+                        Id = s.Id,
+                        MobileNo = s.MobileNo,
+                        PermanentAddressBn = s.PermanentAddressBn,
+                        PresentAddress = s.PresentAddress,
+                        Email = s.Email,
+                        JoinDate = s.JoinDate
+                    }).ToList();
         return data;
     }
 
@@ -92,7 +96,8 @@ public class EmployeeService
                     select new EmployeeViewModel
                     {
                         Name = s.Name,
-                        Dept = s.Dept,
+                        //Dept = s.Dept,
+                        DepartmentId = s.DepartmentId,
                         Id = s.Id,
                         MobileNo = s.MobileNo,
                         PermanentAddressBn = s.PermanentAddressBn,

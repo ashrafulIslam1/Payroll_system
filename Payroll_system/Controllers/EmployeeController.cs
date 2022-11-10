@@ -19,15 +19,9 @@ namespace Payroll_system.Controllers
 
         public IActionResult Index(string searchString)
         {
-            var query = _employeeService.GetAll().AsQueryable();
+            var query = _employeeService.GetAll(searchString);
             ViewData["currentFilter"] = searchString;
-
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                query = query.Where(x => x.Name.Contains(searchString));
-            }
-            return View(query.ToList());
-            //return View(_employeeService.GetAll());
+            return View(query);
         }
 
         [HttpGet]

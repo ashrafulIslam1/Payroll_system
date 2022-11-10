@@ -70,14 +70,13 @@ public class EmployeeService
         _dbContext.SaveChanges();
     }
 
-    public List<EmployeeViewModel> GetAll()
+    public List<EmployeeViewModel> GetAll(string searchString)
     {
-        var data = (from s in _dbContext.Employees
+        var query = (from s in _dbContext.Employees
                     join d in _dbContext.Departments on s.DepartmentId equals d.Id
                     select new EmployeeViewModel
                     {
                         Name = s.Name,
-                        //DepartmentId = s.DepartmentId,
                         DepartmentName = d.Name,
                         Id = s.Id,
                         MobileNo = s.MobileNo,
@@ -85,8 +84,13 @@ public class EmployeeService
                         PresentAddress = s.PresentAddress,
                         Email = s.Email,
                         JoinDate = s.JoinDate
-                    }).ToList();
-        return data;
+                    }).AsQueryable();
+        
+        if(!string.IsNullOrEmpty(searchString))
+        {
+            query = query.Where(s => s.Name.Contains(searchString));
+        }
+        return query.ToList();
     }
 
     public EmployeeViewModel? GetById(int id)

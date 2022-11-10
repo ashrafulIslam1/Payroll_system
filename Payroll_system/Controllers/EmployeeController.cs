@@ -62,7 +62,7 @@ namespace Payroll_system.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.departmentlist = new SelectList(_departmentService.GetDropDown(), "Value", "Text");
             return View(updateEmployee);
         }
 

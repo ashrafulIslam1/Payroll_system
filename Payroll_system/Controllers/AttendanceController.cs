@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Payroll_system.ViewModels;
 using Payroll_system.Services;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
+using System;
 
 namespace Payroll_system.Controllers
 {
@@ -18,9 +20,14 @@ namespace Payroll_system.Controllers
             _employeeService = employeeService; 
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string inDateTime, string outDateTime)
         {
-            return View(_attendanceService.GetAll());
+            var query = _attendanceService.GetAll(inDateTime, outDateTime);
+
+            ViewData["inDateTime"] = IndateTime;
+            ViewData["outDateTime"] = OutdateTime;
+
+            return View(query);
         }
 
         [HttpGet]

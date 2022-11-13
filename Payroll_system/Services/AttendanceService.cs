@@ -61,7 +61,7 @@ public class AttendanceService
         _dbContext.SaveChanges();
     }
 
-    public List<AttendanceViewModel> GetAll()
+    public List<AttendanceViewModel> GetAll( string inDateTime, string outDateTime)
     {
         var data = (from s in _dbContext.Attendances
                     select new AttendanceViewModel

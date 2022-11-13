@@ -11,7 +11,7 @@
         </div>
         
         <div class="d-flex justify-content-between mt-3">
-            
+            <div>
                 <form asp-action="Index" method="get">
                     <div class="form-actions no-color">
                         <p>
@@ -20,17 +20,38 @@
                         </p>
                     </div>
                 </form>
+            </div>
 
-                <div class="text-end">
-                    <a asp-controller="Attendance" asp-action="Create" class="btn btn-primary">
-                        <i class="bi bi-plus-circle-fill"></i> &nbsp;New Attendance
-                    </a>
+            <div class="d-flex">
+                <div>
+                    <form asp-action="Index" method="get">
+                        <div class="form-actions no-color">
+                            <p>
+                                <input type="datetime-local" name="IndateTime" />
+                                <input type="submit" value="Indate" class="btn btn-success btn-sm" />
+                            </p>
+                        </div>
+                    </form>
                 </div>
+                <div>
+                    <form asp-action="Index" method="get">
+                        <div class="form-actions no-color">
+                            <p>
+                                <input type="datetime-local" name="OutdateTime" />
+                                <input type="submit" value="OutdateTime" class="btn btn-success btn-sm" />
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
-         
-            
-            
+            <div class="text-end">
+                <a asp-controller="Attendance" asp-action="Create" class="btn btn-primary">
+                    <i class="bi bi-plus-circle-fill"></i> &nbsp;New Attendance
+                </a>
+            </div>
         </div>
+
     </div>
 
     <table class="table table-borderd table-striped" style="width:100%">

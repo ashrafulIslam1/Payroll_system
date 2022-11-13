@@ -70,7 +70,7 @@ public class EmployeeService
         _dbContext.SaveChanges();
     }
 
-    public List<EmployeeViewModel> GetAll(string searchString)
+    public List<EmployeeViewModel> GetAll(string searchString, string searchDepartment, string sortOrder)
     {
         var query = (from s in _dbContext.Employees
                     join d in _dbContext.Departments on s.DepartmentId equals d.Id
@@ -89,6 +89,27 @@ public class EmployeeService
         if(!string.IsNullOrEmpty(searchString))
         {
             query = query.Where(s => s.Name.Contains(searchString));
+        }
+
+        if (!string.IsNullOrEmpty(searchDepartment))
+        {
+            query = query.Where(s => s.DepartmentName == (searchDepartment));
+        }
+
+        switch (sortOrder)
+        {
+            case "name_desc":
+                query = query.OrderByDescending(s => s.Name);
+                break;
+            case "Date":
+                query = query.OrderBy(s => s.JoinDate);
+                break;
+            case "date_desc":
+                query = query.OrderByDescending(s => s.JoinDate);
+                break;
+            default:
+                query = query.OrderBy(s => s.Name);
+                break;
         }
         return query.ToList();
     }

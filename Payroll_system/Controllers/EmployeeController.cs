@@ -17,10 +17,15 @@ namespace Payroll_system.Controllers
             _departmentService = departmentService;
         }
 
-        public IActionResult Index(string searchString)
+        public IActionResult Index(string searchString, string searchDepartment, string sortOrder)
         {
-            var query = _employeeService.GetAll(searchString);
+            var query = _employeeService.GetAll(searchString, searchDepartment, sortOrder);
+
             ViewData["currentFilter"] = searchString;
+            ViewData["departmentFilter"] = searchDepartment;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            
             return View(query);
         }
 

@@ -25,24 +25,30 @@
             <div class="d-flex">
                 <div>
                     <form asp-action="Index" method="get">
-                        <div class="form-actions no-color">
-                            <p>
-                                <input type="datetime-local" name="IndateTime" />
-                                <input type="submit" value="Indate" class="btn btn-success btn-sm" />
-                            </p>
+                        <div class=" d-flex form-actions no-color">
+                            
+                            <div class="me-2">
+                                <div>Intime</div>
+                                <input type="datetime-local" name="indatetime" />
+                            </div>
+                            <div>
+                                <div>OutTime</div>
+                                <input type="datetime-local" name="outdatetime" />
+                                <input type="submit" value="Submit" class="btn btn-success btn-sm" />
+                            </div>
                         </div>
                     </form>
                 </div>
-                <div>
+                @*<div>
                     <form asp-action="Index" method="get">
                         <div class="form-actions no-color">
                             <p>
-                                <input type="datetime-local" name="OutdateTime" />
-                                <input type="submit" value="OutdateTime" class="btn btn-success btn-sm" />
+                                <input type="datetime-local" name="outdatetime" />
+                                <input type="submit" value="outTime" class="btn btn-success btn-sm" />
                             </p>
                         </div>
                     </form>
-                </div>
+                </div>*@
             </div>
 
             <div class="text-end">
@@ -54,7 +60,7 @@
 
     </div>
 
-    <table class="table table-borderd table-striped" style="width:100%">
+    <table class="mt-5 table table-borderd table-striped" style="width:100%">
         <thead>
             <tr>
                 <th>

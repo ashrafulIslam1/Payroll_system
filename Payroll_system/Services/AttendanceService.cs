@@ -61,7 +61,7 @@ public class AttendanceService
         _dbContext.SaveChanges();
     }
 
-    public List<AttendanceViewModel> GetAll(DateTime? indatetime, DateTime? outdatetime)
+    public List<AttendanceViewModel> GetAll(string searchString, DateTime? indatetime, DateTime? outdatetime)
     {
         var query = (from s in _dbContext.Attendances
                     select new AttendanceViewModel
@@ -75,7 +75,10 @@ public class AttendanceService
                         Status = s.InDateTime == DateTime.MinValue || s.OutDateTime == DateTime.MinValue ? 0 : 1
                         // query.Where(x => x.Status == 1).Count();
                     }).AsQueryable();
-
+        if (!string.IsNullOrEmpty(searchString))
+        {
+            query = query.Where(s => s.EmployeeName.Contains(searchString));
+        }
         if (indatetime.HasValue && outdatetime.HasValue)
         {
             query = query.Where(s => s.InDateTime >= indatetime && s.OutDateTime <= outdatetime);

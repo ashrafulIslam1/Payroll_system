@@ -73,20 +73,20 @@ public class EmployeeService
     public List<EmployeeViewModel> GetAll(string searchString, string searchDepartment, string sortOrder)
     {
         var query = (from s in _dbContext.Employees
-                    join d in _dbContext.Departments on s.DepartmentId equals d.Id
-                    select new EmployeeViewModel
-                    {
-                        Name = s.Name,
-                        DepartmentName = d.Name,
-                        Id = s.Id,
-                        MobileNo = s.MobileNo,
-                        PermanentAddressBn = s.PermanentAddressBn,
-                        PresentAddress = s.PresentAddress,
-                        Email = s.Email,
-                        JoinDate = s.JoinDate
-                    }).AsQueryable();
-        
-        if(!string.IsNullOrEmpty(searchString))
+                     join d in _dbContext.Departments on s.DepartmentId equals d.Id
+                     select new EmployeeViewModel
+                     {
+                         Name = s.Name,
+                         DepartmentName = d.Name,
+                         Id = s.Id,
+                         MobileNo = s.MobileNo,
+                         PermanentAddressBn = s.PermanentAddressBn,
+                         PresentAddress = s.PresentAddress,
+                         Email = s.Email,
+                         JoinDate = s.JoinDate
+                     }).AsQueryable();
+
+        if (!string.IsNullOrEmpty(searchString))
         {
             query = query.Where(s => s.Name.Contains(searchString));
         }

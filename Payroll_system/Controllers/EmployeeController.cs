@@ -25,7 +25,7 @@ namespace Payroll_system.Controllers
             ViewData["departmentFilter"] = searchDepartment;
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
-            
+
             return View(query);
         }
 

@@ -20,10 +20,11 @@ namespace Payroll_system.Controllers
             _employeeService = employeeService; 
         }
 
-        public IActionResult Index(DateTime? indatetime, DateTime outdatetime)
+        public IActionResult Index(string searchString, DateTime? indatetime, DateTime outdatetime)
         {
-            var query = _attendanceService.GetAll(indatetime, outdatetime);
+            var query = _attendanceService.GetAll(searchString, indatetime, outdatetime);
 
+            ViewData["searchString"] = searchString;
             ViewData["inDateTime"] = indatetime;
             ViewData["outDateTime"] = outdatetime;
 

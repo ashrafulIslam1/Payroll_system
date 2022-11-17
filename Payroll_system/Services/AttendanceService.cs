@@ -75,6 +75,7 @@ public class AttendanceService
                         Status = s.InDateTime == DateTime.MinValue || s.OutDateTime == DateTime.MinValue ? 0 : 1
                         // query.Where(x => x.Status == 1).Count();
                     }).AsQueryable();
+
         if (!string.IsNullOrEmpty(searchString))
         {
             query = query.Where(s => s.EmployeeName.Contains(searchString));

@@ -4,6 +4,7 @@ using Payroll_system.ViewModels;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using System;
 
 namespace Payroll_system.Services;
 
@@ -69,9 +70,9 @@ public class LeaveApplicationService
 		_dbContext.SaveChanges();
 	}
 
-	public List<LeaveApllicationViewModel> GetAll()
+	public List<LeaveApllicationViewModel> GetAll(string searchString, DateTime? fromDate, DateTime? toDate)
 	{
-		var data = (from s in _dbContext.LeaveApplications
+		var query = (from s in _dbContext.LeaveApplications
 					select new LeaveApllicationViewModel
 					{
 						Id = s.Id,
@@ -84,8 +85,17 @@ public class LeaveApplicationService
 						ApprovalDate = s.ApprovalDate,
 						ApproavedBy = s.ApproavedBy,
 
-					}).ToList();
-		return data;
+					}).AsQueryable();
+
+        if (!string.IsNullOrEmpty(searchString))
+        {
+            query = query.Where(s => s.LeaveType.Contains(searchString));
+		}
+        if (fromDate.HasValue && toDate.HasValue)
+		{
+            query = query.Where(s => s.FromDate >= fromDate && s.ToDate <= toDate);
+        }
+        return query.ToList();
 	}
 
 	public LeaveApllicationViewModel? GetById(int id)

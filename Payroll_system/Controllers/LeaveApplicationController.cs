@@ -3,6 +3,7 @@ using Payroll_system.Models;
 using Microsoft.AspNetCore.Mvc;
 using Payroll_system.ViewModels;
 using Payroll_system.Services;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Payroll_system.Controllers
 {
@@ -15,9 +16,15 @@ namespace Payroll_system.Controllers
             _leaveApplicationService = leaveApplicationService;
         }
 
-        public IActionResult Index(string searchString)
+        public IActionResult Index(string searchString, DateTime? fromDate, DateTime? toDate)
         {
-            return View(_leaveApplicationService.GetAll());
+            var query = _leaveApplicationService.GetAll(searchString, fromDate, toDate);
+
+            ViewData["searchString"] = searchString;
+            ViewData["fromDate"] = fromDate;
+            ViewData["toDate"] = toDate;
+
+            return View(query);
         }
 
         [HttpGet]

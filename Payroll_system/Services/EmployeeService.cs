@@ -70,13 +70,14 @@ public class EmployeeService
         _dbContext.SaveChanges();
     }
 
-    public List<EmployeeViewModel> GetAll(string searchString, string searchDepartment, string sortOrder)
+    public List<EmployeeViewModel> GetAll(string searchString, int? DepartmentId, string sortOrder)
     {
         var query = (from s in _dbContext.Employees
                      join d in _dbContext.Departments on s.DepartmentId equals d.Id
                      select new EmployeeViewModel
                      {
                          Name = s.Name,
+                         DepartmentId = s.DepartmentId,
                          DepartmentName = d.Name,
                          Id = s.Id,
                          MobileNo = s.MobileNo,
@@ -91,9 +92,9 @@ public class EmployeeService
             query = query.Where(s => s.Name.Contains(searchString));
         }
 
-        if (!string.IsNullOrEmpty(searchDepartment))
+        if(DepartmentId != null)
         {
-            query = query.Where(s => s.DepartmentName == (searchDepartment));
+            query = query.Where(s => s.DepartmentId == (DepartmentId));
         }
 
         switch (sortOrder)

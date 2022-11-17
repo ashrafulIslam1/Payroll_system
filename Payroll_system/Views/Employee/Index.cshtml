@@ -16,9 +16,12 @@
                     <div class="me-2">
                         <input type="text" name="SearchString" value="@ViewData["currentFilter"]" placeholder=" Name" />
                     </div>
-                    <div class ="me-3">
-                        <input type="text" name="searchDepartment" value="@ViewData["departmentFilter"]" placeholder=" Department" />
-                        <input type="submit" value="Search" class="btn btn-dark" />
+                    <div class ="d-flex me-3">
+                        <select name="departmentId" class="form-control" asp-items="@ViewBag.departmentlist"></select>
+                        <div class="ms-2">
+                            <input type="submit" value="Search" class="btn btn-dark" />
+                        </div>
+                        
                     </div>
                 </div>
             </form>

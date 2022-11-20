@@ -61,28 +61,29 @@ public class AttendanceService
         _dbContext.SaveChanges();
     }
 
-    public List<AttendanceViewModel> GetAll(string searchString, DateTime? indatetime, DateTime? outdatetime)
-    {
+    public List<AttendanceViewModel> GetAll(int? EmployeeId, DateTime? fromDate, DateTime? toDate)
+    {         
         var query = (from s in _dbContext.Attendances
-                    select new AttendanceViewModel
-                    {
+                     join e in _dbContext.Employees on s.EmployeeId equals e.Id
+                     select new AttendanceViewModel
+                     {
                         AttendanceId = s.AttendanceId,
                         EmployeeId = s.EmployeeId,
-                        EmployeeName = s.EmployeeName,
+                        EmployeeName = e.Name,
                         Date = s.Date,
                         InDateTime = s.InDateTime,
                         OutDateTime = s.OutDateTime,
                         Status = s.InDateTime == DateTime.MinValue || s.OutDateTime == DateTime.MinValue ? 0 : 1
                         // query.Where(x => x.Status == 1).Count();
-                    }).AsQueryable();
+                     }).AsQueryable();
 
-        if (!string.IsNullOrEmpty(searchString))
+        if (EmployeeId != null)
         {
-            query = query.Where(s => s.EmployeeName.Contains(searchString));
+            query = query.Where(s => s.EmployeeId == (EmployeeId));
         }
-        if (indatetime.HasValue && outdatetime.HasValue)
+        if (fromDate.HasValue && toDate.HasValue)
         {
-            query = query.Where(s => s.InDateTime >= indatetime && s.OutDateTime <= outdatetime);
+            query = query.Where(s => s.InDateTime >= fromDate && s.OutDateTime <= toDate);
         }
         return query.ToList();
     }

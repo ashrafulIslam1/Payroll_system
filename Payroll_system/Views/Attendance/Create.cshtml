@@ -9,20 +9,11 @@
             <h2 class="text-primary">Give Attendance</h2>
             <hr />
         </div>
-        <div class="mb-3">
-            <label asp-for="AttendanceId"></label>
-            <input asp-for="AttendanceId" class="form-control" />
-            <span asp-validation-for="AttendanceId" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="EmployeeId"></label>
-            <input asp-for="EmployeeId" class="form-control" />
-            <span asp-validation-for="EmployeeId" class="text-danger"></span>
-        </div>
+      
         <div class="mb-3">
             <label asp-for="EmployeeName"></label>
-            <select name="EmployeeName" class="form-control" asp-items="@ViewBag.employeelist"></select>
-            <span asp-validation-for="EmployeeName" class="text-danger"></span>
+            <select name="EmployeeId" class="form-control" asp-items="@ViewBag.employeelist"></select>
+            <span asp-validation-for="EmployeeId" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="InDateTime"></label>

@@ -15,19 +15,21 @@
                 <form asp-action="Index" method="get">
                     <div class="d-flex form-actions no-color">
                         <div class="me-2">
-                            <input type="text" name="searchString" />
-                            <div>Name/ID</div>
-                        </div>
-
-                        <div class="me-2">
-                            
-                            <input type="datetime-local" name="indatetime" />
-                            <div>Intime</div>
+                            <input type="datetime-local" name="fromDate" />
+                            <div>From Date</div>
                         </div>
                         <div class="me-3">
-                            <input type="datetime-local" name="outdatetime" />
-                            <input type="submit" value="Submit" class="btn btn-dark" />
-                            <div>OutTime</div>
+                            <input type="datetime-local" name="toDate" />
+                            <div>To Date</div>
+                        </div>
+                        <div class="d-flex me-2">
+                            <div class ="me-2">
+                                <select name="EmployeeId" class="form-control" asp-items="@ViewBag.employeelist"></select>
+                            </div>
+                            
+                            <div>
+                                <input type="submit" value="Submit" class="btn btn-dark" />
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -45,12 +47,12 @@
     <table class="table table-borderd table-striped align-middle shadow-sm p-3 mb-5 bg-body rounded" style="width:100%">
         <thead>
             <tr>
-                <th>
+               @* <th>
                     AttendanceID
                 </th>
                 <th>
                     EmployeeID
-                </th>
+                </th>*@
                 <th>
                     EmployeeName
                 </th>
@@ -73,12 +75,12 @@
             @foreach(var item in Model)
             {
                 <tr>
-                    <td width="10%">
+                    @*<td width="10%">
                         @item.AttendanceId
                     </td>
                     <td width="10%">
                         @item.EmployeeId
-                    </td>
+                    </td>*@
                     <td width="15%">
                         @item.EmployeeName
                     </td>

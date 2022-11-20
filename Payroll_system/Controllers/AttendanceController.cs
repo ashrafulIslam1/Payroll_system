@@ -20,13 +20,14 @@ namespace Payroll_system.Controllers
             _employeeService = employeeService; 
         }
 
-        public IActionResult Index(string searchString, DateTime? indatetime, DateTime outdatetime)
+        public IActionResult Index(int? EmployeeId, DateTime? fromDate, DateTime toDate)
         {
-            var query = _attendanceService.GetAll(searchString, indatetime, outdatetime);
+            var query = _attendanceService.GetAll(EmployeeId, fromDate, toDate);
 
-            ViewData["searchString"] = searchString;
-            ViewData["inDateTime"] = indatetime;
-            ViewData["outDateTime"] = outdatetime;
+            ViewData["fromDate"] = fromDate;
+            ViewData["toDate"] = toDate;
+
+            ViewBag.employeelist = new SelectList(_employeeService.GetDropDown(), "Value", "Text");
 
             return View(query);
         }

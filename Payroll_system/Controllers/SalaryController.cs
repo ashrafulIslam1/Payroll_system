@@ -3,25 +3,33 @@ using Payroll_system.Models;
 using Microsoft.AspNetCore.Mvc;
 using Payroll_system.ViewModels;
 using Payroll_system.Services;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Payroll_system.Controllers
 {
     public class SalaryController : Controller
     {
         private SalaryService _salaryService;
+        private EmployeeService _employeeService;
 
-        public SalaryController(SalaryService salaryService)
+        public SalaryController(SalaryService salaryService, EmployeeService employeeService)
         {
             _salaryService = salaryService;
+            _employeeService = employeeService;
         }
-        public IActionResult Index(string searchString)
+        public IActionResult Index(int? EmployeeId, string searchString)
         {
-            return View(_salaryService.GetAll());
+            var query = _salaryService.GetAll(EmployeeId);
+
+            ViewBag.employeelist = new SelectList(_employeeService.GetDropDown(), "Value", "Text");
+            return View(query);
         }
 
         [HttpGet]
         public IActionResult Create()
         {
+            ViewBag.employeelist = new SelectList(_employeeService.GetDropDown(), "Value", "Text");
             return View();
         }
 

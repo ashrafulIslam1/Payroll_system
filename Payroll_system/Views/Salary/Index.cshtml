@@ -10,18 +10,31 @@
             <h1 class="text-primary">Salary List</h1>
         </div>
 
-        <div class="d-flex justify-content-between mt-3">
+        <div class="d-flex justify-content-end mt-3 shadow-sm p-3 mb-5 bg-body rounded">
+            <div>
+                <form asp-action="Index" method="get">
+                    <div class="d-flex form-actions no-color">
+                        <div class="me-2">
+                            <input type="month" name="fromDate" />
+                            <div>Month</div>
+                        </div>
+                        <div class="me-3">
+                            <input type="date" name="toDate" />
+                            <div>Year</div>
+                        </div>
+                        <div class="d-flex me-2">
+                            <div class="me-2">
+                                <select name="EmployeeId" class="form-control" asp-items="@ViewBag.employeelist"></select>
+                            </div>
+                            <div>
+                                <input type="submit" value="Submit" class="btn btn-dark" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
 
-            <form asp-action="Index" method="get">
-                <div class="form-actions no-color">
-                    <p>
-                        <input type="text" name="SearchString" />
-                        <input type="submit" value="Search" class="btn btn-success btn-sm" />
-                    </p>
-                </div>
-            </form>
-
-            <div class="text-end">
+            <div>
                 <a asp-controller="Salary" asp-action="Create" class="btn btn-primary">
                     <i class="bi bi-plus-circle-fill"></i> &nbsp;New Salary
                 </a>
@@ -39,8 +52,23 @@
                     EmployeeId
                 </th>
                 <th>
-                    SalaryTypeName
+                    EmployeeName
                 </th>
+                <th>
+                    Month
+                </th>
+                <th>
+                    Year
+                </th>
+                <th>
+                    GrossSalary
+                </th>
+                <th>
+                    TotalPay
+                </th>
+                @*<th>
+                    SalaryTypeName
+                </th>*@
             </tr>
         </thead>
 
@@ -54,9 +82,24 @@
                     <td width="10%">
                         @item.EmployeeId
                     </td>
-                    <td width="20%">
-                        @item.SalaryTypeName
+                    <td width="15%">
+                        @item.EmployeeName
                     </td>
+                    <td width="10%">
+                        @item.Month
+                    </td>
+                    <td width="10%">
+                        @item.Year
+                    </td>
+                    <td width="10%">
+                        @item.GrossSalary
+                    </td>
+                    <td width="10%">
+                        @item.TotalPay
+                    </td>
+                    @*<td width="20%">
+                        @item.SalaryTypeName
+                    </td>*@
                     <td>
                         <div class="btn-group mb-0" role="group">
                             <a asp-controller="Salary" asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning rounded-1 text-end"> <i class="bi bi-pencil-square"></i>&nbsp;</a>

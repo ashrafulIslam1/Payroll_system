@@ -25,7 +25,6 @@ public class EmployeeService
             // Here I assign the viewModel properties to the model properties
             Name = viewModel.Name,
             Id = viewModel.Id,
-            //Dept = viewModel.Dept,
             DepartmentId = viewModel.DepartmentId,
             PresentAddress = viewModel.PresentAddress,
             PermanentAddressBn = viewModel.PermanentAddressBn,

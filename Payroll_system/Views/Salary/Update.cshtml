@@ -19,10 +19,30 @@
             <span asp-validation-for="EmployeeId" class="text-danger"></span>
         </div>
         <div class="mb-3">
+            <label asp-for="Month"></label>
+            <input asp-for="Month" class="form-control" />
+            <span asp-validation-for="Month" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Year"></label>
+            <input asp-for="Year" class="form-control" />
+            <span asp-validation-for="Year" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="GrossSalary"></label>
+            <input asp-for="GrossSalary" class="form-control" />
+            <span asp-validation-for="GrossSalary" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="TotalPay"></label>
+            <input asp-for="TotalPay" class="form-control" />
+            <span asp-validation-for="TotalPay" class="text-danger"></span>
+        </div>
+       @* <div class="mb-3">
             <label asp-for="SalaryTypeName"></label>
             <input asp-for="SalaryTypeName" class="form-control" />
             <span asp-validation-for="SalaryTypeName" class="text-danger"></span>
-        </div>
+        </div>*@
     </div>
     <br />
     <button type="submit" class="bnt btn-primary" style="width:150px; height:37px; border-radius:3px">Update</button>

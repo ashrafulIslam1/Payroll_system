@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Payroll_system.ApplicationDb;
 
@@ -11,9 +12,10 @@ using Payroll_system.ApplicationDb;
 namespace Payroll_system.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221121044224_New")]
+    partial class New
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,10 +38,10 @@ namespace Payroll_system.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("InTime")
+                    b.Property<DateTime>("InDateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("OutTime")
+                    b.Property<DateTime>("OutDateTime")
                         .HasColumnType("datetime2");
 
                     b.HasKey("AttendanceId");

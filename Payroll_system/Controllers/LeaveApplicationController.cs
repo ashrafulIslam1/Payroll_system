@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Payroll_system.ViewModels;
 using Payroll_system.Services;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Payroll_system.Controllers
 {
@@ -30,6 +31,15 @@ namespace Payroll_system.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            List<SelectListItem> leaveList = new List<SelectListItem>()
+            {
+                new SelectListItem { Text = "Medical Leave", Value = "1" },
+                new SelectListItem { Text = "Maternity Leave", Value = "2" },
+                new SelectListItem { Text = "Casual Leave", Value = "3" },
+                new SelectListItem { Text = "Wthout Leave", Value = "4" },
+                new SelectListItem { Text = "Earning Leave", Value = "5" },
+            };
+            ViewBag.Leave = leaveList;
             return View();
         }
 

@@ -24,10 +24,10 @@ public class AttendanceService
             // Here I assign the viewModel properties to model properties
             AttendanceId = viewModel.AttendanceId,
             EmployeeId = viewModel.EmployeeId,
-            EmployeeName = viewModel.EmployeeName,
+            //EmployeeName = viewModel.EmployeeName,
             Date = viewModel.Date,
-            InDateTime = viewModel.InDateTime,
-            OutDateTime = viewModel.OutDateTime,
+            InTime = viewModel.InTime,
+            OutTime = viewModel.OutTime,
         };
         
         _dbContext.Attendances.Add(model); // Here 'Attendancse' is the table name
@@ -43,9 +43,9 @@ public class AttendanceService
 
         model.AttendanceId = viewModel.AttendanceId;
         model.EmployeeId = viewModel.EmployeeId;
-        model.EmployeeName = viewModel.EmployeeName;
-        model.InDateTime = viewModel.InDateTime;
-        model.OutDateTime = viewModel.OutDateTime;
+        //model.EmployeeName = viewModel.EmployeeName;
+        model.InTime = viewModel.InTime;
+        model.OutTime = viewModel.OutTime;
 
         _dbContext.Attendances.Update(model);
         _dbContext.SaveChanges();
@@ -71,9 +71,9 @@ public class AttendanceService
                         EmployeeId = s.EmployeeId,
                         EmployeeName = e.Name,
                         Date = s.Date,
-                        InDateTime = s.InDateTime,
-                        OutDateTime = s.OutDateTime,
-                        Status = s.InDateTime == DateTime.MinValue || s.OutDateTime == DateTime.MinValue ? 0 : 1
+                        InTime = s.InTime,
+                        OutTime = s.OutTime,
+                        Status = s.InTime == DateTime.MinValue || s.OutTime == DateTime.MinValue ? 0 : 1
                         // query.Where(x => x.Status == 1).Count();
                      }).AsQueryable();
 
@@ -83,7 +83,7 @@ public class AttendanceService
         }
         if (fromDate.HasValue && toDate.HasValue)
         {
-            query = query.Where(s => s.InDateTime >= fromDate && s.OutDateTime <= toDate);
+            query = query.Where(s => s.Date >= fromDate && s.Date <= toDate);
         }
         return query.ToList();
     }
@@ -96,10 +96,10 @@ public class AttendanceService
                     {
                         AttendanceId = s.AttendanceId,
                         EmployeeId = s.EmployeeId,
-                        EmployeeName = s.EmployeeName,
+                        //EmployeeName = s.EmployeeName,
                         Date = s.Date,
-                        InDateTime = s.InDateTime,
-                        OutDateTime = s.OutDateTime,
+                        InTime = s.InTime,
+                        OutTime = s.OutTime,
                     }).SingleOrDefault();
         return data;
     }

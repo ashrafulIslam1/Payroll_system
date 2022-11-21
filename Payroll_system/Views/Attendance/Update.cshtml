@@ -11,25 +11,25 @@
             <input asp-for="AttendanceId" class="form-control" />
             <span asp-validation-for="AttendanceId" class="text-danger"></span>
         </div>
-        <div class="mb-3">
+       <div class="mb-3">
             <label asp-for="EmployeeId"></label>
             <input asp-for="EmployeeId" class="form-control" />
             <span asp-validation-for="EmployeeId" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="EmployeeName"></label>
-            <input asp-for="EmployeeName" class="form-control" />
-            <span asp-validation-for="EmployeeName" class="text-danger"></span>
+            <select name="EmployeeId" class="form-control" asp-items="@ViewBag.employeelist"></select>
+            <span asp-validation-for="EmployeeId" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="InDateTime"></label>
-            <input asp-for="InDateTime" class="form-control" />
-            <span asp-validation-for="InDateTime" class="text-danger"></span>
+            <label asp-for="InTime"></label>
+            <input asp-for="InTime" class="form-control" />
+            <span asp-validation-for="InTime" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="OutDateTime"></label>
-            <input asp-for="OutDateTime" class="form-control" />
-            <span asp-validation-for="OutDateTime" class="text-danger"></span>
+            <label asp-for="OutTime"></label>
+            <input asp-for="OutTime" class="form-control" />
+            <span asp-validation-for="OutTime" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Date"></label>

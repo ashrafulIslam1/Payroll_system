@@ -73,16 +73,17 @@ namespace Payroll_system.Controllers
                 return NotFound();
             }
 
-            //List<SelectListItem> leaveList = new List<SelectListItem>()
-            //{
-            //    new SelectListItem { Text = "Medical Leave"},
-            //    new SelectListItem { Text = "Maternity Leave"},
-            //    new SelectListItem { Text = "Casual Leave"},
-            //    new SelectListItem { Text = "Wthout Leave"},
-            //    new SelectListItem { Text = "Earning Leave"},
-            //};
-            //ViewBag.Leave = leaveList;
+            List<SelectListItem> leaveList = new List<SelectListItem>()
+            {
+                new SelectListItem { Text = "Medical Leave"},
+                new SelectListItem { Text = "Maternity Leave"},
+                new SelectListItem { Text = "Casual Leave"},
+                new SelectListItem { Text = "Wthout Leave"},
+                new SelectListItem { Text = "Earning Leave"},
+            };
+            ViewBag.Leave = leaveList;
 
+            ViewBag.employeelist = new SelectList(_employeeService.GetDropDown(), "Value", "Text");
             return View(updateLeaveApplicatioin);
         }
 

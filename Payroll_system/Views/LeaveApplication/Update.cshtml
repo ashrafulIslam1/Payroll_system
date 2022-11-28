@@ -10,12 +10,6 @@
             <h2 class="text-primary">Update Application</h2>
             <hr />
         </div>
-
-        <div class="mb-3">
-            <label asp-for="EmployeeName"></label>
-            <select name="EmployeeId" class="form-control" asp-items="@ViewBag.employeelist"></select>
-            <span asp-validation-for="EmployeeId" class="text-danger"></span>
-        </div>
         <div class="mb-3">
             <label asp-for="ReasonOfLeave"></label>
             <input asp-for="ReasonOfLeave" class="form-control" />
@@ -23,8 +17,9 @@
         </div>
         <div class="mb-3">
             <label asp-for="LeaveType"></label>
-            <input asp-for="LeaveType" class="form-control" />
-            @*<select name="LeaveType" class="form-control" asp-items="@ViewBag.Leave"></select>*@
+            <select name="LeaveType" class="form-control" asp-items="@ViewBag.Leave">
+                <option>select type</option>
+            </select>
             <span asp-validation-for="LeaveType" class="text-danger"></span>
         </div>
         <div class="mb-3">

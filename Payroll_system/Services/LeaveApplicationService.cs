@@ -103,7 +103,7 @@ public class LeaveApplicationService
 	public LeaveApllicationViewModel? GetById(int id)
 	{
         var data = (from s in _dbContext.LeaveApplications
-					where s.Id == id && s.EmployeeId == id
+					where s.Id == id
                     select new LeaveApllicationViewModel
                     {
                         Id = s.Id,

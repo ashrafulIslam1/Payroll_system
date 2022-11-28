@@ -12,8 +12,8 @@
         </div>
 
         <div class="mb-3">
-            <label asp-for="EmployeeId"></label>
-            <input asp-for="EmployeeId" class="form-control" />
+            <label asp-for="EmployeeName"></label>
+            <select name="EmployeeId" class="form-control" asp-items="@ViewBag.employeelist"></select>
             <span asp-validation-for="EmployeeId" class="text-danger"></span>
         </div>
         <div class="mb-3">
@@ -24,6 +24,7 @@
         <div class="mb-3">
             <label asp-for="LeaveType"></label>
             <input asp-for="LeaveType" class="form-control" />
+            @*<select name="LeaveType" class="form-control" asp-items="@ViewBag.Leave"></select>*@
             <span asp-validation-for="LeaveType" class="text-danger"></span>
         </div>
         <div class="mb-3">

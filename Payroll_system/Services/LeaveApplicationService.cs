@@ -70,14 +70,16 @@ public class LeaveApplicationService
 		_dbContext.SaveChanges();
 	}
 
-	public List<LeaveApllicationViewModel> GetAll(string searchString, DateTime? fromDate, DateTime? toDate)
+	public List<LeaveApllicationViewModel> GetAll(int? EmployeeId, DateTime? fromDate, DateTime? toDate)
 	{
 		var query = (from s in _dbContext.LeaveApplications
-					select new LeaveApllicationViewModel
+                     join e in _dbContext.Employees on s.EmployeeId equals e.Id
+                     select new LeaveApllicationViewModel
 					{
 						Id = s.Id,
 						EmployeeId = s.EmployeeId,
-						ApplicationDate = s.ApplicationDate,
+                        EmployeeName = e.Name,
+                        ApplicationDate = s.ApplicationDate,
 						FromDate = s.FromDate,
 						ToDate = s.ToDate,
 						ReasonOfLeave = s.ReasonOfLeave,
@@ -87,10 +89,10 @@ public class LeaveApplicationService
 
 					}).AsQueryable();
 
-        if (!string.IsNullOrEmpty(searchString))
+        if (EmployeeId != null)
         {
-            query = query.Where(s => s.LeaveType.Contains(searchString));
-		}
+            query = query.Where(s => s.EmployeeId == (EmployeeId));
+        }
         if (fromDate.HasValue && toDate.HasValue)
 		{
             query = query.Where(s => s.FromDate >= fromDate && s.ToDate <= toDate);

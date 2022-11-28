@@ -11,19 +11,22 @@ namespace Payroll_system.Controllers
     public class LeaveApplicationController : Controller
     {
         private LeaveApplicationService _leaveApplicationService;
+        private EmployeeService _employeeService;
 
-        public LeaveApplicationController(LeaveApplicationService leaveApplicationService)
+        public LeaveApplicationController(LeaveApplicationService leaveApplicationService, EmployeeService employeeService)
         {
             _leaveApplicationService = leaveApplicationService;
+            _employeeService = employeeService;
         }
 
-        public IActionResult Index(string searchString, DateTime? fromDate, DateTime? toDate)
+        public IActionResult Index(int? EmployeeId, DateTime? fromDate, DateTime? toDate)
         {
-            var query = _leaveApplicationService.GetAll(searchString, fromDate, toDate);
+            var query = _leaveApplicationService.GetAll(EmployeeId, fromDate, toDate);
 
-            ViewData["searchString"] = searchString;
             ViewData["fromDate"] = fromDate;
             ViewData["toDate"] = toDate;
+
+            ViewBag.employeelist = new SelectList(_employeeService.GetDropDown(), "Value", "Text");
 
             return View(query);
         }
@@ -31,13 +34,15 @@ namespace Payroll_system.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            ViewBag.employeelist = new SelectList(_employeeService.GetDropDown(), "Value", "Text");
+
             List<SelectListItem> leaveList = new List<SelectListItem>()
             {
-                new SelectListItem { Text = "Medical Leave", Value = "1" },
-                new SelectListItem { Text = "Maternity Leave", Value = "2" },
-                new SelectListItem { Text = "Casual Leave", Value = "3" },
-                new SelectListItem { Text = "Wthout Leave", Value = "4" },
-                new SelectListItem { Text = "Earning Leave", Value = "5" },
+                new SelectListItem { Text = "Medical Leave"},
+                new SelectListItem { Text = "Maternity Leave"},
+                new SelectListItem { Text = "Casual Leave"},
+                new SelectListItem { Text = "Wthout Leave"},
+                new SelectListItem { Text = "Earning Leave"},
             };
             ViewBag.Leave = leaveList;
             return View();
@@ -54,6 +59,7 @@ namespace Payroll_system.Controllers
             return View(viewModel);
         }
 
+        [HttpGet]
         public IActionResult Update(int id)
         {
             if(id == 0)
@@ -66,6 +72,16 @@ namespace Payroll_system.Controllers
             {
                 return NotFound();
             }
+
+            //List<SelectListItem> leaveList = new List<SelectListItem>()
+            //{
+            //    new SelectListItem { Text = "Medical Leave"},
+            //    new SelectListItem { Text = "Maternity Leave"},
+            //    new SelectListItem { Text = "Casual Leave"},
+            //    new SelectListItem { Text = "Wthout Leave"},
+            //    new SelectListItem { Text = "Earning Leave"},
+            //};
+            //ViewBag.Leave = leaveList;
 
             return View(updateLeaveApplicatioin);
         }

@@ -18,9 +18,12 @@ namespace Payroll_system.Controllers
             _salaryService = salaryService;
             _employeeService = employeeService;
         }
-        public IActionResult Index(int? EmployeeId, string searchString)
-        {
-            var query = _salaryService.GetAll(EmployeeId);
+        public IActionResult Index(int? employeeId, DateTime? monthYear)
+        {  
+            int? _month = monthYear == null ? null : monthYear.Value.Month;
+            int? _year = monthYear == null ? null : monthYear.Value.Year;
+
+            var query = _salaryService.GetAll(employeeId, _month, _year);
 
             ViewBag.employeelist = new SelectList(_employeeService.GetDropDown(), "Value", "Text");
             return View(query);
@@ -71,8 +74,6 @@ namespace Payroll_system.Controllers
 
         public IActionResult Delete(int id)
         {
-            //if(id is 0 or null)
-
             if(id == 0)
             {
                 return NotFound();

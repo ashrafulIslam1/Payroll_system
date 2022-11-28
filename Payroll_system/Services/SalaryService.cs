@@ -66,7 +66,7 @@ public class SalaryService
 		_dbContext.SaveChanges();
     }
 
-	public List<SalaryViewModel> GetAll(int? EmployeeId)
+	public List<SalaryViewModel> GetAll(int? employeeId, int? mm, int? yy)
 	{
 		var query = (from s in _dbContext.Salarys
                      join e in _dbContext.Employees on s.EmployeeId equals e.Id
@@ -83,10 +83,16 @@ public class SalaryService
                         //SalaryTypeName = s.SalaryTypeName,
                     }).AsQueryable();
 
-        if (EmployeeId != null)
+        if (employeeId != null)
         {
-            query = query.Where(s => s.EmployeeId == (EmployeeId));
+            query = query.Where(s => s.EmployeeId == (employeeId));
         }
+
+        if (mm != null && yy != null)
+        {
+            query = query.Where(s => s.Year == yy && s.Month == mm);
+        }
+
         return query.ToList();
 	}
 

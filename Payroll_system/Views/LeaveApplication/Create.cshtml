@@ -22,9 +22,7 @@
         </div>
         <div class="mb-3">
             <label asp-for="LeaveType"></label>
-            @*<select name="LeaveType" class="form-control" asp-items="@ViewBag.Leave"></select>*@
-            @*@Html.DropDownList("Leave", (IEnumerable<SelectListItem>)ViewBag.Leave)*@
-            <input asp-for="LeaveType" class="form-control" />
+            <select name="LeaveType" class="form-control" asp-items="@ViewBag.Leave"></select>
             <span asp-validation-for="LeaveType" class="text-danger"></span>
         </div>
         <div class="mb-3">

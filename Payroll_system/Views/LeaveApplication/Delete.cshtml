@@ -10,49 +10,6 @@
 
 <form method="post" asp-action="DeleteAll">
     <input asp-for="Id" hidden />
-    @*<div class="border p-3 mt-5 rounded-2">
-        
-        <div class="mb-3">
-            <label asp-for="EmployeeId"></label>
-            <input asp-for="EmployeeId" class="form-control" />
-            <span asp-validation-for="EmployeeId" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="ReasonOfLeave"></label>
-            <input asp-for="ReasonOfLeave" class="form-control" />
-            <span asp-validation-for="ReasonOfLeave" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="LeaveType"></label>
-            <input asp-for="LeaveType" class="form-control" />
-            <span asp-validation-for="LeaveType" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="FromDate"></label>
-            <input asp-for="FromDate" type="date" class="form-control" />
-            <span asp-validation-for="FromDate" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="ToDate"></label>
-            <input asp-for="ToDate" type="date" class="form-control" />
-            <span asp-validation-for="ToDate" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="ApplicationDate"></label>
-            <input asp-for="ApplicationDate" type="date" class="form-control" />
-            <span asp-validation-for="ApplicationDate" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="ApprovalDate"></label>
-            <input asp-for="ApprovalDate" type="date" class="form-control" />
-            <span asp-validation-for="ApprovalDate" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="ApproavedBy"></label>
-            <input asp-for="ApproavedBy" class="form-control" />
-            <span asp-validation-for="ApproavedBy" class="text-danger"></span>
-        </div>
-    </div>*@
     <br />
     <button type="submit" class="bnt btn-primary" style="width:150px; height:37px; border-radius:3px">Delete</button>
     <a asp-controller="LeaveApplication" asp-action="Index" class="btn btn-danger" style="width:150px">

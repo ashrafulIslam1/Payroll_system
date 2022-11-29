@@ -38,7 +38,7 @@
 
             <div class="text-end">
                 <a asp-controller="Attendance" asp-action="Create" class="btn btn-primary">
-                    <i class="bi bi-plus-circle-fill"></i> &nbsp;New Attendance
+                    <i class="bi bi-plus-circle-fill"></i> New Attendance
                 </a>
             </div>
         </div>
@@ -86,16 +86,16 @@
                     <td width="15%">
                         @item.EmployeeName
                     </td>
-                    <td width="20%">
+                    <td width="10%">
                         @item.InTime.ToShortTimeString()
                     </td>
-                    <td width="20%">
+                    <td width="10%">
                         @item.OutTime.ToShortTimeString()
                     </td>
-                    <td width="20%">
+                    <td width="10%">
                         @item.Date.ToShortDateString()
                     </td>
-                    <td width="20%">
+                    <td width="10%">
                         @(item.Status == 1 ? "Present" : "Absent")
                     </td>
                     <td>

@@ -45,8 +45,8 @@ public class LeaveApplicationService
 		if (model == null)
 			throw new Exception();
 
-		model.Id = viewModel.Id;
-		model.EmployeeId = viewModel.EmployeeId;
+		//model.Id = viewModel.Id;
+		//model.EmployeeId = viewModel.EmployeeId;
 		model.ApplicationDate = viewModel.ApplicationDate;
 		model.FromDate = viewModel.FromDate;
 		model.ToDate = viewModel.ToDate;

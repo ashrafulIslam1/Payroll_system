@@ -44,7 +44,7 @@ public class SalaryService
 			throw new Exception();
 
 		model.Id = viewModel.Id;
-		model.EmployeeId = viewModel.EmployeeId;
+		//model.EmployeeId = viewModel.EmployeeId;
 		model.GrossSalary = viewModel.GrossSalary;
 		model.TotalPay = viewModel.TotalPay;
         model.Year = viewModel.Year;

@@ -4,50 +4,48 @@
     ViewData["Title"] = "Create";
 }
 
-<form method="post">
-    <div class="border p-3 mt-5 rounded-2">
-        <div class="row pb-2">
-            <h2 class="text-primary">Add Salary</h2>
+<form class="row g-3 border rounded-2 p-2 mt-3" method="post">
+        <div>
+            <h2 class="text-primary">Make Salary</h2>
             <hr />
         </div>
 
-        <div class="mb-3">
+        <div>
             <label asp-for="EmployeeName"></label>
             <select name="EmployeeId" class="form-control" asp-items="@ViewBag.employeelist"></select>
             <span asp-validation-for="EmployeeId" class="text-danger"></span>
         </div>
-        <div class="mb-3">
+        <div>
             <label asp-for="Month"></label>
             <input asp-for="Month" class="form-control" />
             <span asp-validation-for="Month" class="text-danger"></span>
         </div>
-        <div class="mb-3">
+        <div>
             <label asp-for="Year"></label>
             <input asp-for="Year" class="form-control" />
             <span asp-validation-for="Year" class="text-danger"></span>
         </div>
-        <div class="mb-3">
+        <div>
             <label asp-for="GrossSalary"></label>
             <input asp-for="GrossSalary" class="form-control" />
             <span asp-validation-for="GrossSalary" class="text-danger"></span>
         </div>
-        <div class="mb-3">
+        <div>
             <label asp-for="TotalPay"></label>
             <input asp-for="TotalPay" class="form-control" />
             <span asp-validation-for="TotalPay" class="text-danger"></span>
         </div>
-        @*<div class="mb-3">
+        @*<div>
             <label asp-for="SalaryTypeName"></label>
             <input asp-for="SalaryTypeName" class="form-control" />
             <span asp-validation-for="SalaryTypeName" class="text-danger"></span>
         </div>*@
-    </div>
-    <br />
-    <button type="submit" class="bnt btn-primary" style="width:150px; height:37px; border-radius:3px">Create</button>
-    <a asp-controller="Salary" asp-action="Index" class="btn btn-danger" style="width:150px">
-        Go back
-    </a>
-
+         <div class="d-flex justify-content-between">
+            <a asp-controller="Salary" asp-action="Index" class="btn btn-secondary" style="width:150px">
+                Go back
+            </a>
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+        </div>
 </form>
 
 @section Scripts{

@@ -1,54 +1,52 @@
 ﻿@model Payroll_system.ViewModels.EmployeeViewModel
 
-
-<form method="post">
-    <div class="border p-3 mt-5 rounded-2">
-        <div class="row pb-2">
-            <h2 class="text-primary">Update Employee</h2>
-            <hr />
-        </div>
-
-        <div class="mb-3">
-            <label asp-for="Name"></label>
-            <input asp-for="Name" class="form-control" />
-            <span asp-validation-for="Name" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="DepartmentName"></label>
-            <select name="DepartmentId" class="form-control" asp-items="@ViewBag.departmentlist"></select>
-            <span asp-validation-for="DepartmentId" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="PresentAddress"></label>
-            <input asp-for="PresentAddress" class="form-control" />
-            <span asp-validation-for="PresentAddress" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="PermanentAddressBn"></label>
-            <input asp-for="PermanentAddressBn" class="form-control" />
-            <span asp-validation-for="PermanentAddressBn" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="JoinDate"></label>
-            <input asp-for="JoinDate" class="form-control" />
-            <span asp-validation-for="JoinDate" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Email"></label>
-            <input asp-for="Email" class="form-control" />
-            <span asp-validation-for="Email" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="MobileNo"></label>
-            <input asp-for="MobileNo" class="form-control" />
-            <span asp-validation-for="MobileNo" class="text-danger"></span>
-        </div>
+<form class="row g-3 border rounded-2 p-3 mt-3" method="post">
+    <div>
+        <h2 class="text-primary">Update Employee</h2>
+        <hr />
     </div>
-    <br />
-    <button type="submit" class="bnt btn-primary" style="width:150px; height:37px; border-radius:3px">Update</button>
-    <a asp-controller="Employee" asp-action="Index" class="btn btn-danger" style="width:150px">
-        Go back
-    </a>
+
+    <div class="col-md-6">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="DepartmentId"></label>
+        <select name="DepartmentId" class="form-control" asp-items="@ViewBag.departmentlist"></select>
+        <span asp-validation-for="DepartmentId" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="MobileNo"></label>
+        <input asp-for="MobileNo" class="form-control" />
+        <span asp-validation-for="MobileNo" class="text-danger"></span>
+    </div>
+    <div class="col-md-5">
+        <label asp-for="PresentAddress"></label>
+        <input asp-for="PresentAddress" class="form-control" />
+        <span asp-validation-for="PresentAddress" class="text-danger"></span>
+    </div>
+    <div class="col-md-5">
+        <label asp-for="PermanentAddressBn"></label>
+        <input asp-for="PermanentAddressBn" class="form-control" />
+        <span asp-validation-for="PermanentAddressBn" class="text-danger"></span>
+    </div>
+    <div class="col-md-2">
+        <label asp-for="JoinDate"></label>
+        <input asp-for="JoinDate" type="date" class="form-control" />
+        <span asp-validation-for="JoinDate" class="text-danger"></span>
+    </div>
+    <div class="d-flex justify-content-between">
+            <a asp-controller="Employee" asp-action="Index" class="btn btn-secondary" style="width:150px">
+                Go back
+            </a>
+        <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+    </div>
 
 </form>
 

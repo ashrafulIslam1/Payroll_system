@@ -4,56 +4,61 @@
     ViewData["Title"] = "Update";
 }
 
-<form method="post">
-    <div class="border p-3 mt-5 rounded-2">
-        <div class="row pb-2">
-            <h2 class="text-primary">Update Application</h2>
-            <hr />
-        </div>
-        <div class="mb-3">
-            <label asp-for="ReasonOfLeave"></label>
-            <input asp-for="ReasonOfLeave" class="form-control" />
-            <span asp-validation-for="ReasonOfLeave" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="LeaveType"></label>
-            <select name="LeaveType" class="form-control" asp-items="@ViewBag.Leave">
-                <option>select type</option>
-            </select>
-            <span asp-validation-for="LeaveType" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="FromDate"></label>
-            <input asp-for="FromDate" type="date" class="form-control" />
-            <span asp-validation-for="FromDate" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="ToDate"></label>
-            <input asp-for="ToDate" type="date" class="form-control" />
-            <span asp-validation-for="ToDate" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="ApplicationDate"></label>
-            <input asp-for="ApplicationDate" type="date" class="form-control" />
-            <span asp-validation-for="ApplicationDate" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="ApprovalDate"></label>
-            <input asp-for="ApprovalDate" type="date" class="form-control" />
-            <span asp-validation-for="ApprovalDate" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="ApproavedBy"></label>
-            <input asp-for="ApproavedBy" class="form-control" />
-            <span asp-validation-for="ApproavedBy" class="text-danger"></span>
-        </div>
+<form class="row g-3 border rounded-2 p-3 mt-3" method="post">
+    <div>
+        <h2 class="text-primary">Update Leave Application</h2>
+        <hr />
     </div>
-    <br />
-    <button type="submit" class="bnt btn-primary" style="width:150px; height:37px; border-radius:3px">Update</button>
-    <a asp-controller="LeaveApplication" asp-action="Index" class="btn btn-danger" style="width:150px">
-        Go back
-    </a>
-
+    <div class="col-md-12">
+        <label asp-for="EmployeeName"></label>
+        <select name="EmployeeId" class="form-control" asp-items="@ViewBag.employeelist">
+            <option>Select Employee</option>
+        </select>
+        <span asp-validation-for="EmployeeId" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="ReasonOfLeave"></label>
+        <input asp-for="ReasonOfLeave" class="form-control" />
+        <span asp-validation-for="ReasonOfLeave" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="LeaveType"></label>
+        <select name="LeaveType" class="form-control" asp-items="@ViewBag.Leave">
+            <option>Chose Leave Type</option>
+        </select>
+        <span asp-validation-for="LeaveType" class="text-danger"></span>
+    </div>
+    <div class="col-md-4">
+        <label asp-for="FromDate"></label>
+        <input asp-for="FromDate" type="date" class="form-control" />
+        <span asp-validation-for="FromDate" class="text-danger"></span>
+    </div>
+    <div class="col-md-4">
+        <label asp-for="ToDate"></label>
+        <input asp-for="ToDate" type="date" class="form-control" />
+        <span asp-validation-for="ToDate" class="text-danger"></span>
+    </div>
+    <div class="col-md-4">
+        <label asp-for="ApplicationDate"></label>
+        <input asp-for="ApplicationDate" type="date" class="form-control" />
+        <span asp-validation-for="ApplicationDate" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="ApproavedBy"></label>
+        <input asp-for="ApproavedBy" class="form-control" />
+        <span asp-validation-for="ApproavedBy" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="ApprovalDate"></label>
+        <input asp-for="ApprovalDate" type="date" class="form-control" />
+        <span asp-validation-for="ApprovalDate" class="text-danger"></span>
+    </div>
+    <div class="d-flex justify-content-between">
+        <a asp-controller="LeaveApplication" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Go back
+        </a>
+        <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+    </div>
 </form>
 
 @section Scripts{

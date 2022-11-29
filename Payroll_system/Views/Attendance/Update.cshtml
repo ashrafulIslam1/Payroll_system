@@ -1,48 +1,42 @@
 ﻿@model Payroll_system.ViewModels.AttendanceViewModel
 
-<form method="post">
-    <div class="border p-3 mt-5 rounded-2">
-        <div class="row pb-2">
-            <h2 class="text-primary">Update Attendance</h2>
-            <hr />
-        </div>
-        <div class="mb-3">
-            <label asp-for="AttendanceId"></label>
-            <input asp-for="AttendanceId" class="form-control" />
-            <span asp-validation-for="AttendanceId" class="text-danger"></span>
-        </div>
-       @*<div class="mb-3">
-            <label asp-for="EmployeeId"></label>
-            <input asp-for="EmployeeId" class="form-control" />
-            <span asp-validation-for="EmployeeId" class="text-danger"></span>
-        </div>*@
-        <div class="mb-3">
-            <label asp-for="EmployeeName"></label>
-            <select name="EmployeeId" class="form-control" asp-items="@ViewBag.employeelist"></select>
-            <span asp-validation-for="EmployeeId" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="InTime"></label>
-            <input asp-for="InTime" class="form-control" />
-            <span asp-validation-for="InTime" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="OutTime"></label>
-            <input asp-for="OutTime" class="form-control" />
-            <span asp-validation-for="OutTime" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Date"></label>
-            <input asp-for="Date" class="form-control" />
-            <span asp-validation-for="Date" class="text-danger"></span>
-        </div>
-    </div>
-    <br />
-    <button type="submit" class="bnt btn-primary" style="width:150px; height:37px; border-radius:3px">Update</button>
-    <a asp-controller="Attendance" asp-action="Index" class="btn btn-danger" style="width:150px">
-        Go back
-    </a>
 
+<form class="row g-3 border rounded-2 p-3 mt-3" method="post">
+    <div>
+        <h2 class="text-primary">Update Attendance</h2>
+        <hr />
+    </div>
+    <div>
+        <label asp-for="AttendanceId"></label>
+        <input asp-for="AttendanceId" class="form-control" />
+        <span asp-validation-for="AttendanceId" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="EmployeeName"></label>
+        <select name="EmployeeId" class="form-control" asp-items="@ViewBag.employeelist"></select>
+        <span asp-validation-for="EmployeeId" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="InTime"></label>
+        <input asp-for="InTime" type="time" class="form-control" />
+        <span asp-validation-for="InTime" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="OutTime"></label>
+        <input asp-for="OutTime" type="time" class="form-control" />
+        <span asp-validation-for="OutTime" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Date"></label>
+        <input asp-for="Date" type="date" class="form-control" />
+        <span asp-validation-for="Date" class="text-danger"></span>
+    </div>
+    <div class="d-flex justify-content-between">
+        <a asp-controller="Attendance" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Go back
+        </a>
+        <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+    </div>
 </form>
 
 @section Scripts{

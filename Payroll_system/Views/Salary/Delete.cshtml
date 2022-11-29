@@ -8,12 +8,12 @@
 </div>
 <form method="post" asp-action="DeleteAll">
     <input asp-for="Id" hidden />
-    <br />
-    <button type="submit" class="bnt btn-primary" style="width:150px; height:37px; border-radius:3px">Delete</button>
-    <a asp-controller="Salary" asp-action="Index" class="btn btn-danger" style="width:150px">
-        Go back
-    </a>
-    <div/>
+    <div class="d-flex justify-content-between mt-2">
+        <a asp-controller="Salary" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Go back
+        </a>
+        <button type="submit" class="btn btn-danger" style="width:150px">Delete</button>
+    </div>
 </form>
 
 @section Scripts{

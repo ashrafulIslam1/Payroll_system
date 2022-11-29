@@ -21,12 +21,13 @@
             <input asp-for="Name" class="form-control" />
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
+        <div class="d-flex justify-content-between">
+            <a asp-controller="Department" asp-action="Index" class="btn btn-secondary" style="width:150px">
+                Go back
+            </a>
+            <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+        </div>
     </div>
-    <br />
-    <button type="submit" class="bnt btn-primary" style="width:150px; height:37px; border-radius:3px">Update</button>
-    <a asp-controller="Department" asp-action="Index" class="btn btn-danger" style="width:150px">
-        Go back
-    </a>
 
 </form>
 

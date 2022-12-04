@@ -3,12 +3,13 @@
     ViewData["Title"] = "Create";
 }
 
-<form class="row g-3 border rounded-2 p-3 mt-3" method="post">
+<div class="px-lg-5 border rounded-2 mx-lg-5 my-lg-5 small">
+    
+    <form class="row g-2  p-2 px-lg-5 mx-lg-5 my-lg-5" method="post">
         <div>
-            <h2 class="text-primary">Apply Leave Application</h2>
-            <hr />
+         <h2 class="text-primary">Apply Leave Application</h2>
+         <hr />
         </div>
-
         <div class="col-md-12">
             <label asp-for="EmployeeName"></label>
             <select name="EmployeeId" class="form-control" asp-items="@ViewBag.employeelist">
@@ -60,6 +61,8 @@
         <button type="submit" class="btn btn-primary" style="width:150px">Apply</button>
         </div>
 </form>
+</div>
+
 
 @section Scripts{
     @{

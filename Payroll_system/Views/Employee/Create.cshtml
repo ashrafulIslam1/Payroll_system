@@ -4,12 +4,13 @@
 }
 
 
-<form class="row g-3 border rounded-2 p-2 mt-3" method="post">
-        <div>
-            <h2 class="text-primary">Add Employee</h2>
-            <hr />
-        </div>
 
+<div class="px-lg-5 border rounded-2 mx-lg-5 my-lg-5 small">
+    <div class="px-lg-5 mx-lg-5 my-lg-5">
+     <h2 class="text-primary fs-4">Add Employee</h2>
+     <hr />
+    </div>
+    <form class="row g-2  p-2 px-lg-5 mx-lg-5 my-lg-5" method="post">
         <div class="col-md-6">
             <label asp-for="Name"></label>
             <input asp-for="Name" class="form-control" />
@@ -52,6 +53,8 @@
         <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
         </div>
 </form>
+</div>
+
 
 @section Scripts{
     @{

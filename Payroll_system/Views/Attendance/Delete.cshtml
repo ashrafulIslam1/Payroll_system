@@ -6,46 +6,15 @@
 <div class="row pt-5">
     <h2 class="text-primary">Delete Attendance??</h2>
 </div>
-
 <form method="post" asp-action="DeleteAll">
-    <input asp-for="AttendanceId" hidden/>
-    @*<div class="border p-3 mt-5 rounded-2">
-        <div class="row pb-2">
-            <h2 class="text-primary">Delete Attendance</h2>
-            <hr />
-        </div>
+    <input asp-for="AttendanceId" hidden />
 
-        <div class="mb-3">
-            <label asp-for="EmployeeId"></label>
-            <input asp-for="EmployeeId" class="form-control" />
-            <span asp-validation-for="EmployeeId" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="EmployeeName"></label>
-            <input asp-for="EmployeeName" class="form-control" />
-            <span asp-validation-for="EmployeeName" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="InDateTime"></label>
-            <input asp-for="InDateTime" class="form-control" />
-            <span asp-validation-for="InDateTime" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="OutDateTime"></label>
-            <input asp-for="OutDateTime" class="form-control" />
-            <span asp-validation-for="OutDateTime" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Date"></label>
-            <input asp-for="Date" class="form-control" />
-            <span asp-validation-for="Date" class="text-danger"></span>
-        </div>
-    </div>*@
-    <br />
-    <button type="submit" class="bnt btn-primary" style="width:150px; height:37px; border-radius:3px">Delete</button>
-    <a asp-controller="Attendance" asp-action="Index" class="btn btn-danger" style="width:150px">
-        Go back
-    </a>
+    <div class="d-flex justify-content-between mt-2">
+        <a asp-controller="Attendance" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Go back
+        </a>
+        <button type="submit" class="btn btn-danger" style="width:150px">Delete</button>
+    </div>
 </form>
 
 @section Scripts{

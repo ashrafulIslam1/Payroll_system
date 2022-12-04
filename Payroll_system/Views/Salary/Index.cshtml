@@ -63,9 +63,6 @@
                 <th>
                     TotalPay
                 </th>
-                @*<th>
-                    SalaryTypeName
-                </th>*@
                 <th>
 
                 </th>
@@ -86,7 +83,49 @@
                         @item.EmployeeName
                     </td>
                     <td width="10%">
-                        @item.Month
+                        @switch(@item.Month)
+                        {
+                            case 1: 
+                                <div>Januray</div>
+                                break;
+                            case 2:
+                                <div>February</div>
+                                break;
+                            case 3:
+                                <div>March</div>
+                                break;
+                            case 4:
+                                <div>April</div>
+                                break;
+                            case 5:
+                                <div>May</div>
+                                break;
+                            case 6:
+                                <div>June</div>
+                                break;
+                            case 7:
+                                <div>July</div>
+                                break;
+                            case 8:
+                                <div>August</div>
+                                break;
+                            case 9:
+                                <div>September</div>
+                                break;
+                            case 10:
+                                <div>October</div>
+                                break;
+                            case 11:
+                                <div>November</div>
+                                break;
+                            case 12:
+                                <div>December</div>
+                                break;
+                            
+                            default:
+                                <div>Wrong</div>
+                                break;
+                        }
                     </td>
                     <td width="10%">
                         @item.Year
@@ -97,9 +136,6 @@
                     <td width="10%">
                         @item.TotalPay
                     </td>
-                    @*<td width="20%">
-                        @item.SalaryTypeName
-                    </td>*@
                     <td>
                         <div class="btn-group mb-0" role="group">
                             <a asp-controller="Salary" asp-action="Update" asp-route-id="@item.Id" class="btn btn-primary rounded-1 text-end"> <i class="bi bi-pencil-square"></i></a>

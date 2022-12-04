@@ -13,7 +13,11 @@
     </div>
     <div>
         <label asp-for="EmployeeName"></label>
-        <select name="EmployeeId" class="form-control" asp-items="@ViewBag.employeelist"></select>
+        <select name="EmployeeId" class="form-control" asp-items="@ViewBag.employeelist">
+            <option>
+                Select Employee
+            </option>
+        </select>
         <span asp-validation-for="EmployeeId" class="text-danger"></span>
     </div>
     <div>

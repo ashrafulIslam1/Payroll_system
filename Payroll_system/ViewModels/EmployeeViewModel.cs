@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Payroll_system.Common_Daterange_Attribute;
 
 namespace Payroll_system.ViewModels
 {
@@ -11,6 +12,7 @@ namespace Payroll_system.ViewModels
         public string? DepartmentName { get; set; }
         public string? PresentAddress { get; set; }
         public string? PermanentAddressBn { get; set; }
+        [CurrentorGreaterDate]
         public DateTime JoinDate { get; set; }
         public string? Email { get; set; }
         public string? MobileNo { get; set; }

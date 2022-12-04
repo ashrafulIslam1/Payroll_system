@@ -23,7 +23,7 @@ public class AttendanceService
         {
             // Here I assign the viewModel properties to model properties
             AttendanceId = viewModel.AttendanceId,
-            //EmployeeId = viewModel.EmployeeId,
+            EmployeeId = viewModel.EmployeeId,
             //EmployeeName = viewModel.EmployeeName,
             Date = viewModel.Date,
             InTime = viewModel.InTime,

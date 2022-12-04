@@ -1,4 +1,6 @@
-﻿namespace Payroll_system.ViewModels
+﻿using Payroll_system.Common_Daterange_Attribute;
+
+namespace Payroll_system.ViewModels
 {
     public class AttendanceViewModel
     {
@@ -7,6 +9,8 @@
         public string? EmployeeName { get; set; }
         public DateTime InTime { get; set; }
         public DateTime OutTime { get; set; }
+
+        [CurrentDate]
         public DateTime Date { get; set; }
         public int Status { get; set; }
     }

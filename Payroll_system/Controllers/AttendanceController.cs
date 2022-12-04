@@ -98,7 +98,7 @@ namespace Payroll_system.Controllers
         [HttpPost]
         public IActionResult DeleteAll(int? id)
         {
-            if(id == null || id ==0)
+            if(id == null || id == 0)
             {
                 return NotFound();
             }

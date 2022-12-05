@@ -24,12 +24,12 @@ public class SalaryService
             // Here I assign the viewModel properties to the model properties
             Id = viewModel.Id,
 			EmployeeId = viewModel.EmployeeId,
-            GrossSalary = viewModel.GrossSalary,
+            Basic = viewModel.Basic,
+            HomeAllowance = viewModel.HomeAllowance,
+            MedicalExpense = viewModel.MedicalExpense,
             TotalPay = viewModel.TotalPay,
             Year = viewModel.Year,
             Month = viewModel.Month,
-
-            //SalaryTypeName = viewModel.SalaryTypeName,
         };
 
 		_dbContext.Salarys.Add(model); // Here 'Salarys' is the table name
@@ -45,11 +45,12 @@ public class SalaryService
 
 		model.Id = viewModel.Id;
 		//model.EmployeeId = viewModel.EmployeeId;
-		model.GrossSalary = viewModel.GrossSalary;
+        model.Basic = viewModel.Basic;
+        model.HomeAllowance = viewModel.HomeAllowance;
+        model.MedicalExpense = viewModel.MedicalExpense;
 		model.TotalPay = viewModel.TotalPay;
         model.Year = viewModel.Year;
         model.Month = viewModel.Month;
-		//model.SalaryTypeName = viewModel.SalaryTypeName;
 
 		_dbContext.Salarys.Update(model);
 		_dbContext.SaveChanges();
@@ -75,12 +76,12 @@ public class SalaryService
 						Id = s.Id,
 						EmployeeId = s.EmployeeId,
                         EmployeeName = e.Name,
-                        GrossSalary = s.GrossSalary,
+                        Basic = s.Basic,
+                        HomeAllowance = s.HomeAllowance,
+                        MedicalExpense = s.MedicalExpense,
                         TotalPay = s.TotalPay,
                         Year = s.Year,
                         Month = s.Month,
-
-                        //SalaryTypeName = s.SalaryTypeName,
                     }).AsQueryable();
 
         if (employeeId != null)
@@ -104,12 +105,12 @@ public class SalaryService
                     {
                         Id = s.Id,
 						EmployeeId = s.EmployeeId,
-                        GrossSalary = s.GrossSalary,
+                        Basic = s.Basic,
+                        HomeAllowance = s.HomeAllowance,
+                        MedicalExpense = s.MedicalExpense,
                         TotalPay = s.TotalPay,
                         Year = s.Year,
                         Month = s.Month,
-
-                        //SalaryTypeName = s.SalaryTypeName,
                     }).SingleOrDefault();
         return data;
     }

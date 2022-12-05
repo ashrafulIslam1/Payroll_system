@@ -41,7 +41,7 @@
 
     <table class="table table-borderd table-striped shadow-sm">
         <thead>
-            <tr class="text-center">
+            <tr class="small text-center">
                 <th>
                     ID
                 </th>
@@ -78,7 +78,7 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr class="text-center">
+                <tr class="small text-center">
                     <td width="10%">
                         @item.Id
                     </td>
@@ -137,21 +137,21 @@
                         @item.Year
                     </td>
                     <td width="10%">
-                        @item.Basic
+                        @item.Basic Tk
                     </td>
-                    <td width="10%">
-                        @item.HomeAllowance
+                    <td width="13%">
+                        @item.HomeAllowance Tk
                     </td>
-                    <td width="10%">
-                        @item.MedicalExpense
+                    <td width="13%">
+                        @item.MedicalExpense Tk
                     </td>
-                    <td width="10%">
-                        @item.TotalPay
+                    <td width="13%">
+                        @item.TotalPay Tk
                     </td>
                     <td>
                         <div class="btn-group mb-0" role="group">
-                            <a asp-controller="Salary" asp-action="Update" asp-route-id="@item.Id" class="btn btn-primary rounded-1 text-end"> <i class="bi bi-pencil-square"></i></a>
-                            <a asp-controller="Salary" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger mx-1 rounded-1"> <i class="bi bi-trash3-fill"></i></a>
+                            <a asp-controller="Salary" asp-action="Update" asp-route-id="@item.Id" class="btn btn-primary rounded-1 text-end btn-sm"> <i class="bi bi-pencil-square"></i></a>
+                            <a asp-controller="Salary" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger mx-1 rounded-1 btn-sm"> <i class="bi bi-trash3-fill"></i></a>
                         </div>
 
                     </td>

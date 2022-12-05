@@ -1,16 +1,19 @@
 ﻿@model Payroll_system.ViewModels.SalaryViewModel
 
 
-<form class="row g-3 border rounded-2 p-2 mt-3" method="post">
+<div class="px-lg-5 border rounded-2 mx-lg-5 my-lg-5 small">
+    <form class="row g-3  p-2 px-lg-5 mx-lg-5 my-lg-5" method="post">
         <div>
-            <h2 class="text-primary">Update Salary</h2>
+            <h2 class="text-primary fs-4">Update Salary</h2>
             <hr />
         </div>
 
         <div>
-            <label asp-for="Id"></label>
-            <input asp-for="Id" class="form-control" />
-            <span asp-validation-for="Id" class="text-danger"></span>
+            <label asp-for="EmployeeName"></label>
+            <select name="EmployeeId" class="form-control" asp-items="@ViewBag.employeelist">
+                <option>Select Employee</option>
+            </select>
+            <span asp-validation-for="EmployeeId" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="Month"></label>
@@ -42,13 +45,14 @@
             <input asp-for="TotalPay" class="form-control" />
             <span asp-validation-for="TotalPay" class="text-danger"></span>
         </div>
-         <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between">
             <a asp-controller="Salary" asp-action="Index" class="btn btn-secondary" style="width:150px">
                 Go back
             </a>
-        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+            <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
         </div>
-</form>
+    </form>
+</div>
 
 @section Scripts{
     @{

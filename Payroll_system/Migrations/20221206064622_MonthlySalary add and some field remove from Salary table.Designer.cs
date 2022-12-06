@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Payroll_system.ApplicationDb;
 
@@ -11,9 +12,10 @@ using Payroll_system.ApplicationDb;
 namespace Payroll_system.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221206064622_MonthlySalary add and some field remove from Salary table")]
+    partial class MonthlySalaryaddandsomefieldremovefromSalarytable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -152,30 +154,21 @@ namespace Payroll_system.Migrations
                     b.Property<double>("HomeAllowance")
                         .HasColumnType("float");
 
-                    b.Property<int>("LeaveDays")
-                        .HasColumnType("int");
-
                     b.Property<double>("MedicalExpense")
                         .HasColumnType("float");
 
-                    b.Property<int?>("Month")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PresentDays")
+                    b.Property<int>("Month")
                         .HasColumnType("int");
 
                     b.Property<double>("TotalPay")
                         .HasColumnType("float");
 
-                    b.Property<int>("WorkingDays")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Year")
+                    b.Property<int>("Year")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("MonthlySalary");
+                    b.ToTable("SalarySetup");
                 });
 
             modelBuilder.Entity("Payroll_system.Models.Salary", b =>
@@ -200,7 +193,7 @@ namespace Payroll_system.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SalarySetup");
+                    b.ToTable("Salarys");
                 });
 #pragma warning restore 612, 618
         }

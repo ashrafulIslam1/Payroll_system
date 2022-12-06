@@ -15,16 +15,6 @@
             </select>
             <span asp-validation-for="EmployeeId" class="text-danger"></span>
         </div>
-        <div class="col-md-6">
-            <label asp-for="Month"></label>
-            <input asp-for="Month" class="form-control" />
-            <span asp-validation-for="Month" class="text-danger"></span>
-        </div>
-        <div class="col-md-6">
-            <label asp-for="Year"></label>
-            <input asp-for="Year" class="form-control" />
-            <span asp-validation-for="Year" class="text-danger"></span>
-        </div>
         <div class="col-md-4">
             <label asp-for="Basic"></label>
             <input asp-for="Basic" class="form-control" />
@@ -39,11 +29,6 @@
             <label asp-for="MedicalExpense"></label>
             <input asp-for="MedicalExpense" class="form-control" />
             <span asp-validation-for="MedicalExpense" class="text-danger"></span>
-        </div>
-        <div>
-            <label asp-for="TotalPay"></label>
-            <input asp-for="TotalPay" class="form-control" />
-            <span asp-validation-for="TotalPay" class="text-danger"></span>
         </div>
         <div class="d-flex justify-content-between">
             <a asp-controller="Salary" asp-action="Index" class="btn btn-secondary" style="width:150px">

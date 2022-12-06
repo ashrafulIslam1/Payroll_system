@@ -65,6 +65,7 @@ public class AttendanceService
     {         
         var query = (from s in _dbContext.Attendances
                      join e in _dbContext.Employees on s.EmployeeId equals e.Id
+                     orderby s.Date
                      select new AttendanceViewModel
                      {
                         AttendanceId = s.AttendanceId,

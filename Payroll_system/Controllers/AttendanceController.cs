@@ -90,7 +90,9 @@ namespace Payroll_system.Controllers
             var deleteAttendance = _attendanceService.GetById((int)id);
 
             if(deleteAttendance == null)
+            {
                 return NotFound();
+            }
 
             return View(deleteAttendance);
         }

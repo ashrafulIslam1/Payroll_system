@@ -21,7 +21,7 @@ namespace Payroll_system.ViewModels
         [Display(Name = "Out Time")]
         public DateTime OutTime { get; set; }
 
-        [CurrentDate]
+        //[CurrentDate]
         public DateTime Date { get; set; }
 
         public int Status { get; set; }

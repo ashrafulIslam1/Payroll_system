@@ -58,6 +58,7 @@ namespace Payroll_system.Controllers
             {
                 return NotFound();
             }
+            ViewBag.employeelist = new SelectList(_employeeService.GetDropDown(), "Value", "Text");
             return View(updateSalary);
         }
 
@@ -69,6 +70,7 @@ namespace Payroll_system.Controllers
                 _salaryService.Update(viewModel);
                 return RedirectToAction("Index");
             }
+            
             return View(viewModel);
         }
 

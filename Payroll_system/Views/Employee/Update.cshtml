@@ -15,7 +15,9 @@
         </div>
         <div class="col-md-6">
             <label asp-for="DepartmentName"></label>
-            <select name="DepartmentId" class="form-control" asp-items="@ViewBag.departmentlist"></select>
+            <select name="DepartmentId" class="form-control" asp-items="@ViewBag.departmentlist">
+                <option>Select Department</option>
+            </select>
             <span asp-validation-for="DepartmentId" class="text-danger"></span>
         </div>
         <div class="col-md-6">
